@@ -1,0 +1,126 @@
+/* ================================================================ */
+/* Kinetic typography                                                */
+/* ================================================================ */
+:root {
+  --display: "Syne", "Space Grotesk", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+}
+@property --sh { syntax: "<number>"; initial-value: 0; inherits: false; }
+
+/* display headings: per-letter gradient, depth shadow, travelling light */
+.fx { font-family: var(--display); font-weight: 800; letter-spacing: -0.035em; line-height: 1.04; }
+.fx .w { display: inline-block; white-space: nowrap; }
+.fx em { font-style: normal; }
+.fx .ch {
+  --base: color-mix(in oklab, #ede9fe, color-mix(in oklab, #a78bfa, #67e8f9 calc(var(--t, 0) * 100%)) calc(25% + var(--t, 0) * 75%));
+  display: inline-block; position: relative; will-change: translate;
+  color: color-mix(in oklab, #ffffff calc(var(--sh) * 85%), var(--base));
+  text-shadow:
+    0 0 calc((var(--g, 0) + var(--sh)) * 26px) rgba(150, 210, 255, calc(var(--g, 0) * .9 + var(--sh) * .8)),
+    0 1px 0 rgba(120, 90, 230, .55),
+    0 3px 0 rgba(60, 30, 140, .45),
+    0 14px 30px rgba(0, 0, 0, .5);
+  transition:
+    translate .75s cubic-bezier(.2, 1.7, .35, 1),
+    rotate .75s cubic-bezier(.2, 1.7, .35, 1),
+    scale .75s cubic-bezier(.2, 1.7, .35, 1),
+    color .3s;
+  animation: chIn .95s cubic-bezier(.2, .8, .2, 1) calc(var(--ci) * 28ms + var(--d, 0s)) both, chShine 7s ease-in-out calc(1.2s + var(--ci) * 45ms) infinite;
+}
+/* outlined accent words that fill with light on hover */
+.fx em .ch {
+  color: color-mix(in oklab, var(--base) calc(var(--sh) * 60% + var(--g, 0) * 100%), transparent);
+  -webkit-text-stroke: 1.4px var(--base);
+  text-shadow: 0 0 calc((var(--g, 0) + var(--sh)) * 26px) rgba(150, 210, 255, calc(var(--g, 0) * .9 + var(--sh) * .7));
+}
+.fx.fx-hot em .ch { transition: translate .75s cubic-bezier(.2,1.7,.35,1), rotate .75s cubic-bezier(.2,1.7,.35,1), scale .75s cubic-bezier(.2,1.7,.35,1), color .25s; }
+.fx { cursor: default; }
+
+/* hidden reveal blocks keep their letters parked; they fly in when shown */
+.rv:not(.on) .fx .ch, .fx.rv:not(.on) .ch, .exp:not(.on) .fx .ch, .project-card:not(.on) .fx .ch,
+.gal-intro:not(.on) .fx .ch, .skills-ui:not(.on) .fx .ch { animation: none; opacity: 0; }
+
+@keyframes chIn {
+  from { opacity: 0; transform: translateY(.6em) rotateX(-90deg) scale(.9); filter: blur(10px); }
+  60% { filter: blur(0); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+@keyframes chShine {
+  0%, 86%, 100% { --sh: 0; }
+  92% { --sh: 1; }
+}
+
+/* sizes for display headings */
+.panel h2.fx { font-size: clamp(30px, 3.3vw, 46px); margin-bottom: 18px; }
+.exp-intro h2.fx, .gal-intro h2.fx { font-size: clamp(48px, 8.4vw, 118px); line-height: .95; }
+.portal-copy h2.fx { font-size: clamp(36px, 6vw, 76px); }
+.contact-title.fx { font-size: clamp(40px, 7vw, 100px); background: none; -webkit-background-clip: initial; background-clip: initial; color: inherit; line-height: 1; }
+.project-card h3.fx { font-size: 32px; letter-spacing: -.03em; }
+.job-head h3.fx { font-size: 28px; }
+.sk-head h3.fx { font-size: 24px; }
+
+/* labels: monospace, decoding */
+.kicker {
+  font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: .22em;
+  display: inline-flex; align-items: center; gap: 10px; color: #67e8f9;
+}
+.kicker::before { content: ""; width: 26px; height: 1px; background: linear-gradient(90deg, transparent, #67e8f9); box-shadow: 0 0 8px #67e8f9; }
+.kicker::after { content: "_"; color: #a78bfa; animation: caret 1s steps(1) infinite; }
+@keyframes caret { 50% { opacity: 0; } }
+.hero-title { font-family: var(--mono) !important; font-weight: 500 !important; letter-spacing: .42em !important; font-size: clamp(13px, 1.6vw, 17px) !important; }
+.lk-kicker, .stack-k, .edu-k, .badge, .pc-index i, .hud, .sk-count, .meta-line { font-family: var(--mono) !important; }
+.outro-tag { font-family: var(--mono) !important; font-weight: 500; }
+
+/* body copy */
+.panel p, .hero-tag, .contact-lead, .gal-intro p { font-family: var(--body); letter-spacing: .005em; }
+.panel .lead { position: relative; padding-left: 16px; color: #e2e5ff; }
+.panel .lead::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 2px; border-radius: 2px; background: linear-gradient(#a78bfa, #22d3ee); box-shadow: 0 0 10px #22d3ee; }
+.pc-sub, .job-co { font-family: var(--mono) !important; font-size: 12.5px !important; letter-spacing: .04em; text-transform: uppercase; }
+
+/* big numbers */
+.metric b, .facts b, .ld-num, .lk-time, .pc-index { font-family: var(--display) !important; font-weight: 800 !important; letter-spacing: -.04em; }
+.exp-date { font-family: var(--display) !important; font-weight: 800 !important; }
+.exp-date .d-end { color: transparent !important; -webkit-text-stroke: 1.5px rgba(196, 181, 253, .55); }
+.stack-word { font-family: var(--display) !important; font-weight: 700 !important; }
+.brand { font-family: var(--display) !important; font-weight: 800 !important; letter-spacing: -.02em; font-size: 19px !important; }
+
+/* nav + buttons: tracked uppercase */
+.nav ul a { font-family: var(--mono); font-size: 12px !important; letter-spacing: .12em; text-transform: uppercase; }
+.btn { font-family: "Space Grotesk", var(--body); text-transform: uppercase; letter-spacing: .1em; font-size: 13px; }
+.btn-sm { font-size: 11.5px; }
+.sk-tabs button { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; }
+.lk-hint { font-family: var(--mono) !important; letter-spacing: .2em !important; }
+
+/* ================================================================ */
+/* Light burst (press on text / name)                                */
+/* ================================================================ */
+.spark { position: fixed; width: 0; height: 0; z-index: 999; pointer-events: none; }
+.spark::before {
+  content: ""; position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.95), rgba(103,232,249,.5) 30%, transparent 70%);
+  animation: flashOut .45s ease-out forwards;
+}
+.spark b {
+  position: absolute; left: -12px; top: -12px; width: 24px; height: 24px; border-radius: 50%;
+  border: 2px solid #9be7ff; box-shadow: 0 0 20px #67e8f9, inset 0 0 12px #a78bfa;
+  animation: shock .75s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+.spark b:nth-child(2) { border-color: #c4b5fd; box-shadow: 0 0 20px #a78bfa; animation-delay: .09s; animation-duration: .9s; }
+.spark i {
+  position: absolute; left: 0; top: -1px; width: var(--l); height: 2px; transform-origin: 0 50%; rotate: var(--a);
+  background: linear-gradient(90deg, #fff, #67e8f9 40%, transparent); box-shadow: 0 0 10px #67e8f9;
+  animation: ray .6s ease-out var(--dl) both;
+}
+@keyframes flashOut { from { opacity: 1; transform: scale(.3); } to { opacity: 0; transform: scale(calc(1.6 * var(--s, 1))); } }
+@keyframes shock { from { transform: scale(.2); opacity: 1; } to { transform: scale(calc(9 * var(--s, 1))); opacity: 0; } }
+@keyframes ray {
+  0% { transform: scaleX(0); opacity: 1; }
+  35% { transform: scaleX(1) translateX(8px); opacity: 1; }
+  100% { transform: scaleX(.15) translateX(calc(var(--l) * 1.3)); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx .ch { animation: none !important; transition: none; }
+  .kicker::after { animation: none; }
+}
+body.static .fx .ch { animation: none; opacity: 1; }

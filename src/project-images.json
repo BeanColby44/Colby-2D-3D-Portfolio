@@ -1,0 +1,646 @@
+{
+  "angel-extensions": {
+    "dir": "projects/angel-extensions/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "joinedbio": {
+    "dir": "projects/joinedbio/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "goddessance": {
+    "dir": "projects/goddessance/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      },
+      {
+        "src": "extra-1.jpg",
+        "caption": "Campaign visual",
+        "tall": true
+      }
+    ]
+  },
+  "ernest-leoty": {
+    "dir": "projects/ernest-leoty/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "princess-dental": {
+    "dir": "projects/princess-dental/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "alivia-danny": {
+    "dir": "projects/alivia-danny/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "mockit": {
+    "dir": "projects/mockit/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "obscura": {
+    "dir": "projects/obscura/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "simi-haze": {
+    "dir": "projects/simi-haze/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "freightmate": {
+    "dir": "projects/freightmate/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "soulario": {
+    "dir": "projects/soulario/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "angus-mobile": {
+    "dir": "projects/angus-mobile/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "burndy": {
+    "dir": "projects/burndy/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "workstream": {
+    "dir": "projects/workstream/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      },
+      {
+        "src": "live.jpg",
+        "caption": "Live site capture"
+      }
+    ]
+  },
+  "weather-routing": {
+    "dir": "projects/weather-routing/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "blade": {
+    "dir": "projects/blade/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "abc-storage": {
+    "dir": "projects/abc-storage/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  }
+}

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Colby Bean — Full Stack Engineer</title>
+  <meta name="description" content="Colby Bean — Senior Full Stack Engineer with 7+ years building enterprise web applications, backend services, mobile-connected systems, and cloud-based software." />
+  <meta property="og:title" content="Colby Bean — Full Stack Engineer" />
+  <meta property="og:description" content="An interactive 3D portfolio: enterprise web apps, backend services, mobile apps and cloud infrastructure." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#03030a" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%2306060f'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='26' fill='url(%23g)'%3ECB%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+</head>
+<body class="locked is-locked show-flat">
+  <canvas id="gl" aria-hidden="true"></canvas>
+
+  <!-- Navigation -->
+  <header class="nav" id="nav">
+    <a class="brand" href="#hero" data-jump="hero">Colby<span>.</span>Bean</a>
+    <nav aria-label="Main">
+      <ul id="navList">
+        <li><a href="#stack" data-jump="stack">Stack</a></li>
+        <li><a href="#journey" data-jump="journey">Experience</a></li>
+        <li><a href="#projects" data-jump="projects">Projects</a></li>
+        <li><a href="#build" data-jump="build">Process</a></li>
+        <li><a href="#contact" data-jump="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button type="button" class="enter-2d" data-enter-2d aria-label="Open the 2D portfolio">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9h16" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>2D</span>
+      </button>
+      <button class="snd-btn" id="sndBtn" type="button" aria-pressed="true" aria-label="Sound on" data-cursor="Sound">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </button>
+      <a class="btn btn-ghost btn-sm" id="navResume" href="Colby-Bean-Resume.pdf" download>Résumé</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navList">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Chapter HUD -->
+  <div class="hud" id="hud" aria-hidden="true">
+    <span class="hud-num" id="hudNum">01</span>
+    <span class="hud-bar"><span id="hudFill"></span></span>
+    <span class="hud-label" id="hudLabel">Intro</span>
+  </div>
+
+  <main id="story"></main>
+
+  <!-- All projects dialog -->
+  <dialog id="projectsDialog" aria-labelledby="pdTitle">
+    <div class="pd-head">
+      <h2 id="pdTitle">All projects</h2>
+      <button class="icon-btn" id="pdClose" aria-label="Close">✕</button>
+    </div>
+    <ol class="pd-list" id="pdList"></ol>
+  </dialog>
+
+  <!-- Lock screen: same look as the loader -->
+  <button type="button" class="enter-2d enter-2d-lock" data-enter-2d aria-label="Open the 2D portfolio">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4 9h16" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+    <span>2D</span>
+  </button>
+  <div id="lock" class="show" role="dialog" aria-modal="true" aria-labelledby="lkHint" aria-hidden="false">
+    <div class="ld-ring">
+      <svg viewBox="0 0 220 220" aria-hidden="true">
+        <defs>
+          <linearGradient id="ldGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#a78bfa" />
+            <stop offset="0.5" stop-color="#60a5fa" />
+            <stop offset="1" stop-color="#22d3ee" />
+          </linearGradient>
+        </defs>
+        <circle class="ld-dash" cx="110" cy="110" r="104" />
+        <circle class="ld-track" cx="110" cy="110" r="92" />
+        <circle class="ld-prog lk-prog" id="lkProg" cx="110" cy="110" r="92" />
+      </svg>
+      <div class="ld-num"><span id="lkNum">000</span><small>%</small></div>
+    </div>
+    <p class="ld-hint">
+      <span class="mouse" aria-hidden="true"><span></span></span>
+      <span id="lkHint">Press &amp; hold to enter</span>
+    </p>
+  </div>
+
+  <!-- cinematic name reveal -->
+  <div class="letterbox" aria-hidden="true"><i></i><i></i></div>
+  <p class="film-title" aria-hidden="true">A Colby Bean production</p>
+  <div id="ignite" aria-live="polite"><b><i></i></b><span>Click to ignite</span></div>
+
+  <!-- gallery hover card + long-press loader -->
+  <div id="hoverCard" aria-hidden="true"></div>
+  <div id="pressRing" aria-hidden="true">
+    <svg viewBox="0 0 80 80"><circle class="pr-track" cx="40" cy="40" r="34" /><circle class="pr-prog" id="prProg" cx="40" cy="40" r="34" /></svg>
+    <span>Opening</span>
+  </div>
+
+  <div id="veil" aria-hidden="true"></div>
+  <div id="flat"></div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
