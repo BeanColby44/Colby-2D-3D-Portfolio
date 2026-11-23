@@ -253,11 +253,11 @@ export const PROJECTS: Project[] = [
     url: "https://www.princessdentalstaffing.com/", linkLabel: "Visit website",
   },
   {
-    slug: "angus-mobile", name: "Angus Mobile", sub: "Cattle Management App · American Angus Association", cat: "mobile",
-    summary: "A cross-platform app for the American Angus Association that gives cattle breeders and members access to herd records, association resources, and relevant updates, with notifications and usage analytics.",
-    role: "Developed cross-platform features with C#, .NET MAUI, and Blazor Hybrid. Built interfaces for herd records and member resources, integrated REST APIs and authentication, and added OneSignal notifications and Firebase Analytics for iOS and Android.",
+    slug: "carwash-app", name: "CarWash App", sub: "Car Wash Management Platform", cat: "mobile",
+    summary: "Developed a web and mobile-connected car wash platform that allows customers to purchase individual washes, manage monthly memberships, and access promotions and referral programs. Built business management features for handling customers, subscriptions, payments, marketing campaigns, and car wash operations.",
+    role: "Mobile Software Engineer on a 2-year contract with a team of 2. Developed and maintained web and mobile features for customer and business management, including registration, single-wash purchases, and monthly memberships. Built promotions, referrals, and SMS and email engagement, plus an administrative dashboard for customers, memberships, and car wash operations. Integrated payment and subscription workflows for recurring memberships and individual purchases, and collaborated with a team of 6 developers to deliver features, resolve issues, and improve the application.",
     tags: ["C#", ".NET", ".NET MAUI", "Blazor Hybrid", "REST APIs", "Firebase Analytics", "OneSignal", "iOS", "Android"],
-    url: "https://apps.apple.com/us/app/angus-mobile/id491758227", linkLabel: "View on App Store",
+    url: "https://carwashapp.com/", linkLabel: "Visit website",
   },
   {
     slug: "burndy", name: "Burndy Intelli Tools", sub: "Mobile Product Information App", cat: "mobile",
@@ -318,7 +318,6 @@ export const PROBLEMS = [
 export const REACH = [
   { name: "Winter Park, FL", lat: 28.6, lon: -81.34, home: true },
   { name: "Australia · Angel Extensions", lat: -33.87, lon: 151.21 },
-  { name: "Missouri · Angus Mobile", lat: 39.77, lon: -94.85 },
   { name: "Nashua · ZCO Corporation", lat: 42.77, lon: -71.47 },
   { name: "Plano · Arbisoft", lat: 33.02, lon: -96.7 },
   { name: "Greenville · Designli", lat: 34.85, lon: -82.39 },

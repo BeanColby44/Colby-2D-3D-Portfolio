@@ -24,7 +24,7 @@ const SITES = [
   ["freightmate", "https://www.freightmateapp.com/"],
   ["joinedbio", "https://joined.bio/"],
   ["workstream", "https://www.workstream.us/"],
-  ["angus-mobile", "https://apps.apple.com/us/app/angus-mobile/id491758227"],
+  ["carwash-app", "https://carwashapp.com/"],
   ["princess-dental", "https://www.princessdentalstaffing.com/"],
   ["burndy", "https://apps.apple.com/us/app/burndy-connect/id1294811019"],
   ["angel-extensions", "https://angelextensions.com.au/"],

@@ -502,6 +502,11 @@ async function start() {
   window.addEventListener("pointermove", (e) => {
     pointerTarget.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1);
     ndc.copy(pointerTarget);
+    if (document.body.classList.contains("show-flat")) {
+      if (cardShown >= 0) showHoverCard(-1, 0, 0);
+      cursor.setScene(null);
+      return;
+    }
     const overCanvas = e.target === canvas && !lockShown && mode === "open" && !detail.isOpen;
 
     // dragging rotates the scene's main object
@@ -978,6 +983,12 @@ async function start() {
     if (detail.isOpen) {
       sound.setIntensity(0.45);
       sound.setRoom(0.3);
+      requestAnimationFrame(frame);
+      return;
+    }
+
+    // The 2D page covers the WebGL view. Drawing the scene underneath only makes the pointer feel heavy.
+    if (document.body.classList.contains("show-flat") && !document.body.classList.contains("warping")) {
       requestAnimationFrame(frame);
       return;
     }

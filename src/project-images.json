@@ -421,8 +421,8 @@
       }
     ]
   },
-  "angus-mobile": {
-    "dir": "projects/angus-mobile/",
+  "carwash-app": {
+    "dir": "projects/carwash-app/",
     "images": [
       {
         "src": "hero.jpg",
@@ -453,10 +453,6 @@
       {
         "src": "noir.jpg",
         "caption": "Editorial grade"
-      },
-      {
-        "src": "live.jpg",
-        "caption": "Live site capture"
       }
     ]
   },

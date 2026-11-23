@@ -591,10 +591,10 @@ function paintStars(canvas: HTMLCanvasElement) {
     };
   });
   const lights = [
-    { x: 0.14, y: 0.16, r: 360, vx: 0.02, vy: 0.009, color: "99, 102, 241", a: 0.2 },
-    { x: 0.84, y: 0.1, r: 300, vx: -0.016, vy: 0.011, color: "34, 211, 238", a: 0.14 },
-    { x: 0.58, y: 0.78, r: 440, vx: 0.012, vy: -0.014, color: "139, 92, 246", a: 0.13 },
-    { x: 0.28, y: 0.52, r: 240, vx: -0.018, vy: 0.007, color: "103, 232, 249", a: 0.1 },
+    { x: 0.14, y: 0.16, r: 360, vx: 0.02, vy: 0.009, color: "99, 102, 241", a: 0.2, sprite: glowSprite("99, 102, 241", 0.2) },
+    { x: 0.84, y: 0.1, r: 300, vx: -0.016, vy: 0.011, color: "34, 211, 238", a: 0.14, sprite: glowSprite("34, 211, 238", 0.14) },
+    { x: 0.58, y: 0.78, r: 440, vx: 0.012, vy: -0.014, color: "139, 92, 246", a: 0.13, sprite: glowSprite("139, 92, 246", 0.13) },
+    { x: 0.28, y: 0.52, r: 240, vx: -0.018, vy: 0.007, color: "103, 232, 249", a: 0.1, sprite: glowSprite("103, 232, 249", 0.1) },
   ];
   const streaks = [0, 1].map((i) => ({
     x: Math.random() * 0.7,
@@ -605,11 +605,28 @@ function paintStars(canvas: HTMLCanvasElement) {
     speed: 0.55 + Math.random() * 0.4,
   }));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let beam: HTMLCanvasElement | null = null;
+  const rebuildBeam = () => {
+    const h = Math.max(1, innerHeight);
+    const c = document.createElement("canvas");
+    c.width = 380;
+    c.height = h;
+    const g = c.getContext("2d");
+    if (!g) return;
+    const grad = g.createLinearGradient(0, 0, 380, h);
+    grad.addColorStop(0, "rgba(186, 210, 255, 0)");
+    grad.addColorStop(0.5, "rgba(210, 230, 255, 0.07)");
+    grad.addColorStop(1, "rgba(186, 210, 255, 0)");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 380, h);
+    beam = c;
+  };
   const fit = () => {
-    const dpr = Math.min(devicePixelRatio || 1, 2);
+    const dpr = Math.min(devicePixelRatio || 1, 1.5);
     canvas.width = Math.floor(innerWidth * dpr);
     canvas.height = Math.floor(innerHeight * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    rebuildBeam();
   };
   fit();
   addEventListener("resize", fit);
@@ -626,23 +643,14 @@ function paintStars(canvas: HTMLCanvasElement) {
         if (light.x < -0.2 || light.x > 1.2) light.vx *= -1;
         if (light.y < -0.2 || light.y > 1.2) light.vy *= -1;
       }
-      const glow = ctx.createRadialGradient(light.x * w, light.y * h, 0, light.x * w, light.y * h, light.r);
-      glow.addColorStop(0, `rgba(${light.color}, ${light.a})`);
-      glow.addColorStop(1, `rgba(${light.color}, 0)`);
-      ctx.fillStyle = glow;
-      ctx.beginPath();
-      ctx.arc(light.x * w, light.y * h, light.r, 0, Math.PI * 2);
-      ctx.fill();
+      const gx = light.x * w;
+      const gy = light.y * h;
+      ctx.drawImage(light.sprite, gx - light.r, gy - light.r, light.r * 2, light.r * 2);
     }
 
-    if (moving) {
+    if (moving && beam) {
       const sweep = ((t * 0.000045) % 1.4) - 0.2;
-      const beam = ctx.createLinearGradient(sweep * w - 160, 0, sweep * w + 220, h);
-      beam.addColorStop(0, "rgba(186, 210, 255, 0)");
-      beam.addColorStop(0.5, "rgba(210, 230, 255, 0.07)");
-      beam.addColorStop(1, "rgba(186, 210, 255, 0)");
-      ctx.fillStyle = beam;
-      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(beam, sweep * w - 160, 0, 380, h);
 
       ctx.lineCap = "round";
       for (const streak of streaks) {
@@ -706,11 +714,39 @@ function paintStars(canvas: HTMLCanvasElement) {
   }
 
   let last = performance.now();
+  let backlog = 0;
   const draw = (t: number) => {
     const dt = Math.min(0.05, (t - last) / 1000);
     last = t;
-    paint(t, true, dt);
+    if (!document.hidden) {
+      const live = document.body.classList.contains("show-flat") || document.body.classList.contains("warping");
+      if (live) {
+        backlog = 0;
+        paint(t, true, dt);
+      } else {
+        // Hidden behind the 3D view: the sky texture only samples this about 20 times a second.
+        backlog += dt;
+        if (backlog >= 0.05) {
+          paint(t, true, backlog);
+          backlog = 0;
+        }
+      }
+    }
     requestAnimationFrame(draw);
   };
   requestAnimationFrame(draw);
+}
+
+function glowSprite(color: string, alpha: number) {
+  const size = 128;
+  const c = document.createElement("canvas");
+  c.width = c.height = size;
+  const g = c.getContext("2d");
+  if (!g) return c;
+  const grad = g.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  grad.addColorStop(0, `rgba(${color}, ${alpha})`);
+  grad.addColorStop(1, `rgba(${color}, 0)`);
+  g.fillStyle = grad;
+  g.fillRect(0, 0, size, size);
+  return c;
 }

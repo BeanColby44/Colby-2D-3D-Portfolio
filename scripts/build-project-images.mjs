@@ -15,9 +15,9 @@ const outRoot = path.join(root, "public", "projects");
 const NUMBER_TO_SLUG = {
   1: "angel-extensions", 2: "joinedbio", 3: "goddessance", 4: "ernest-leoty", 5: "princess-dental",
   6: "alivia-danny", 7: "mockit", 8: "obscura", 9: "simi-haze", 10: "freightmate",
-  11: "soulario", 12: "angus-mobile", 13: "burndy", 14: "goddessance",
+  11: "soulario", 13: "burndy", 14: "goddessance",
 };
-const ALL_SLUGS = [...new Set(Object.values(NUMBER_TO_SLUG)), "workstream"];
+const ALL_SLUGS = [...new Set(Object.values(NUMBER_TO_SLUG)), "workstream", "carwash-app"];
 
 const files = fs.readdirSync(srcDir).filter((f) => /^\d+-.+\.(png|jpe?g|webp)$/i.test(f));
 const bySlug = {};

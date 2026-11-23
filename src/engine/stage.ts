@@ -5,12 +5,20 @@ import { DragSpin, Pokes } from "./pokes";
 let flatSky: THREE.CanvasTexture | null = null;
 let flatPlate: HTMLCanvasElement | null = null;
 let flatPlateCtx: CanvasRenderingContext2D | null = null;
+let flatSrc: HTMLCanvasElement | null = null;
+let skyStamp = 0;
 function flatSkyMap() {
   if (flatSky) return flatSky;
   const canvas = document.querySelector<HTMLCanvasElement>(".flat-stars");
   if (!canvas) return null;
   flatPlate = document.createElement("canvas");
+  flatPlate.width = 2;
+  flatPlate.height = 2;
   flatPlateCtx = flatPlate.getContext("2d");
+  if (flatPlateCtx) {
+    flatPlateCtx.fillStyle = "#03030a";
+    flatPlateCtx.fillRect(0, 0, 2, 2);
+  }
   flatSky = new THREE.CanvasTexture(flatPlate);
   flatSky.colorSpace = THREE.SRGBColorSpace;
   flatSky.magFilter = THREE.LinearFilter;
@@ -19,16 +27,26 @@ function flatSkyMap() {
   return flatSky;
 }
 function refreshFlatSky() {
-  const src = document.querySelector<HTMLCanvasElement>(".flat-stars");
-  if (!flatSky || !flatPlate || !flatPlateCtx || !src || src.width === 0) return;
-  if (flatPlate.width !== src.width || flatPlate.height !== src.height) {
-    flatPlate.width = src.width;
-    flatPlate.height = src.height;
+  const body = document.body;
+  // The 2D page already shows this canvas. Uploading it to the GPU as well only stalls the pointer.
+  if (body.classList.contains("show-flat") && !body.classList.contains("warping")) return;
+  const now = performance.now();
+  if (now - skyStamp < 50) return;
+  if (!flatSrc || !flatSrc.isConnected) flatSrc = document.querySelector<HTMLCanvasElement>(".flat-stars");
+  if (!flatSky || !flatPlate || !flatPlateCtx || !flatSrc || flatSrc.width === 0) return;
+  skyStamp = now;
+  const edge = Math.max(flatSrc.width, flatSrc.height);
+  const scale = edge > 1440 ? 1440 / edge : 1;
+  const pw = Math.max(2, Math.round(flatSrc.width * scale));
+  const ph = Math.max(2, Math.round(flatSrc.height * scale));
+  if (flatPlate.width !== pw || flatPlate.height !== ph) {
+    flatPlate.width = pw;
+    flatPlate.height = ph;
   }
   flatPlateCtx.setTransform(1, 0, 0, 1, 0, 0);
   flatPlateCtx.fillStyle = "#03030a";
-  flatPlateCtx.fillRect(0, 0, flatPlate.width, flatPlate.height);
-  flatPlateCtx.drawImage(src, 0, 0);
+  flatPlateCtx.fillRect(0, 0, pw, ph);
+  flatPlateCtx.drawImage(flatSrc, 0, 0, pw, ph);
   flatSky.needsUpdate = true;
 }
 

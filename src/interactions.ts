@@ -43,10 +43,22 @@ export function initHover(reduced: boolean) {
 
   if (!fine || reduced) return;
 
-  // magnetic pull
+  // magnetic pull + 3D tilt, applied once per frame so a fast mouse doesn't force layout on every event
   let mag: HTMLElement | null = null;
-  document.addEventListener("pointermove", (e) => {
-    const el = (e.target as HTMLElement).closest<HTMLElement>(MAGNETIC);
+  let tilt: HTMLElement | null = null;
+  let moveX = 0;
+  let moveY = 0;
+  let moveTarget: HTMLElement | null = null;
+  let moveQueued = false;
+  const resetTilt = (el: HTMLElement) => {
+    el.style.rotate = "";
+    el.classList.remove("tilting");
+  };
+  const applyPointer = () => {
+    moveQueued = false;
+    const hit = moveTarget;
+    if (!hit?.closest) return;
+    const el = hit.closest<HTMLElement>(MAGNETIC);
     if (mag && mag !== el) {
       mag.style.translate = "";
       mag.classList.remove("magnet");
@@ -55,35 +67,34 @@ export function initHover(reduced: boolean) {
     if (el) {
       mag = el;
       const r = el.getBoundingClientRect();
-      const dx = e.clientX - (r.left + r.width / 2);
-      const dy = e.clientY - (r.top + r.height / 2);
+      const dx = moveX - (r.left + r.width / 2);
+      const dy = moveY - (r.top + r.height / 2);
       el.classList.add("magnet");
       el.style.translate = `${dx * 0.28}px ${dy * 0.38}px`;
-      el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-      el.style.setProperty("--my", `${e.clientY - r.top}px`);
+      el.style.setProperty("--mx", `${moveX - r.left}px`);
+      el.style.setProperty("--my", `${moveY - r.top}px`);
     }
-  });
-
-  // 3D tilt + spotlight
-  let tilt: HTMLElement | null = null;
-  const reset = (el: HTMLElement) => {
-    el.style.rotate = "";
-    el.classList.remove("tilting");
+    const card = hit.closest<HTMLElement>(TILT);
+    if (tilt && tilt !== card) resetTilt(tilt);
+    tilt = card;
+    if (!card) return;
+    const r = card.getBoundingClientRect();
+    const px = (moveX - r.left) / r.width - 0.5;
+    const py = (moveY - r.top) / r.height - 0.5;
+    const maxDeg = card.classList.contains("panel") ? 4 : 9;
+    const pull = Math.min(1, Math.hypot(px, py) * 2) * maxDeg;
+    card.classList.add("tilting");
+    card.style.rotate = `${-py} ${px} 0 ${pull.toFixed(2)}deg`;
+    card.style.setProperty("--mx", `${((px + 0.5) * 100).toFixed(1)}%`);
+    card.style.setProperty("--my", `${((py + 0.5) * 100).toFixed(1)}%`);
   };
   document.addEventListener("pointermove", (e) => {
-    const el = (e.target as HTMLElement).closest<HTMLElement>(TILT);
-    if (tilt && tilt !== el) reset(tilt);
-    tilt = el;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    const maxDeg = el.classList.contains("panel") ? 4 : 9;
-    const mag = Math.min(1, Math.hypot(px, py) * 2) * maxDeg;
-    el.classList.add("tilting");
-    el.style.rotate = `${-py} ${px} 0 ${mag.toFixed(2)}deg`;
-    el.style.setProperty("--mx", `${((px + 0.5) * 100).toFixed(1)}%`);
-    el.style.setProperty("--my", `${((py + 0.5) * 100).toFixed(1)}%`);
+    moveX = e.clientX;
+    moveY = e.clientY;
+    moveTarget = e.target as HTMLElement;
+    if (moveQueued) return;
+    moveQueued = true;
+    requestAnimationFrame(applyPointer);
   });
 
   // sliding nav indicator

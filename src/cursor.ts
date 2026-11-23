@@ -26,6 +26,8 @@ export class Cursor {
   private domLabel: string | null = null;
   private sceneLabel: string | null = null;
   private holdLabel: string | null = null;
+  private snapRadius = 10;
+  private frameParked = false;
 
   constructor() {
     this.enabled = matchMedia("(pointer: fine)").matches && !matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -74,6 +76,7 @@ export class Cursor {
       // only snap onto compact controls; large blocks just get a label
       const r = snap?.getBoundingClientRect();
       this.target = snap && r && r.width < 460 && r.height < 160 ? snap : null;
+      this.snapRadius = this.target ? parseFloat(getComputedStyle(this.target).borderRadius) || 10 : 10;
       const labelled = t.closest<HTMLElement>("[data-cursor], a, .fx");
       this.domLabel = labelled ? labelFor(labelled) : null;
       this.refresh();
@@ -139,21 +142,25 @@ export class Cursor {
     if (this.target && this.root.classList.contains("snap")) {
       if (!this.target.isConnected) {
         this.target = null;
+        this.frameParked = false;
         this.refresh();
       } else {
         const r = this.target.getBoundingClientRect();
         const pad = 5;
-        const radius = parseFloat(getComputedStyle(this.target).borderRadius) || 10;
         this.frame.style.transform = `translate3d(${r.left - pad}px, ${r.top - pad}px, 0)`;
         this.frame.style.width = `${r.width + pad * 2}px`;
         this.frame.style.height = `${r.height + pad * 2}px`;
-        this.frame.style.borderRadius = `${Math.min(radius + pad, (r.height + pad * 2) / 2)}px`;
+        this.frame.style.borderRadius = `${Math.min(this.snapRadius + pad, (r.height + pad * 2) / 2)}px`;
+        this.frameParked = false;
       }
     } else {
       // park the outline as a small square on the pointer so it grows from there next time
       this.frame.style.transform = `translate3d(${this.x - 8}px, ${this.y - 8}px, 0)`;
-      this.frame.style.width = "16px";
-      this.frame.style.height = "16px";
+      if (!this.frameParked) {
+        this.frame.style.width = "16px";
+        this.frame.style.height = "16px";
+        this.frameParked = true;
+      }
     }
     requestAnimationFrame(this.loop);
   };
