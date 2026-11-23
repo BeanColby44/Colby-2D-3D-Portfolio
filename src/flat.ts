@@ -605,28 +605,11 @@ function paintStars(canvas: HTMLCanvasElement) {
     speed: 0.55 + Math.random() * 0.4,
   }));
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  let beam: HTMLCanvasElement | null = null;
-  const rebuildBeam = () => {
-    const h = Math.max(1, innerHeight);
-    const c = document.createElement("canvas");
-    c.width = 380;
-    c.height = h;
-    const g = c.getContext("2d");
-    if (!g) return;
-    const grad = g.createLinearGradient(0, 0, 380, h);
-    grad.addColorStop(0, "rgba(186, 210, 255, 0)");
-    grad.addColorStop(0.5, "rgba(210, 230, 255, 0.07)");
-    grad.addColorStop(1, "rgba(186, 210, 255, 0)");
-    g.fillStyle = grad;
-    g.fillRect(0, 0, 380, h);
-    beam = c;
-  };
   const fit = () => {
     const dpr = Math.min(devicePixelRatio || 1, 1.5);
     canvas.width = Math.floor(innerWidth * dpr);
     canvas.height = Math.floor(innerHeight * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    rebuildBeam();
   };
   fit();
   addEventListener("resize", fit);
@@ -648,10 +631,7 @@ function paintStars(canvas: HTMLCanvasElement) {
       ctx.drawImage(light.sprite, gx - light.r, gy - light.r, light.r * 2, light.r * 2);
     }
 
-    if (moving && beam) {
-      const sweep = ((t * 0.000045) % 1.4) - 0.2;
-      ctx.drawImage(beam, sweep * w - 160, 0, 380, h);
-
+    if (moving) {
       ctx.lineCap = "round";
       for (const streak of streaks) {
         if (streak.life <= 0) {
