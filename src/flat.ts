@@ -1,5 +1,5 @@
 import "./flat.css";
-import { ACHIEVEMENTS, CATEGORIES, EXPERIENCE, PROFILE, PROJECTS, SKILLS, STRENGTHS } from "./data";
+import { ACHIEVEMENTS, CATEGORIES, EXPERIENCE, PROFILE, PROJECTS, SKILLS } from "./data";
 
 const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
@@ -16,6 +16,180 @@ const ICON = {
 
 const enterBtn = (label: string, extra = "") =>
   `<button type="button" class="flat-3d ${extra}" data-enter-3d>${cube}<span>${label}</span></button>`;
+
+const CAT_SHORT: Record<string, string> = {
+  platform: "SaaS",
+  mobile: "Mobile",
+  shopify: "Shopify",
+  wordpress: "WordPress",
+};
+
+function builtPoints(role: string) {
+  const parts = role.split(/(?<=[.!?])\s+/).map((part) => part.trim()).filter(Boolean);
+  return parts.length ? parts : [role];
+}
+
+const BUILT: Record<string, string[]> = {
+  "weather-routing": [
+    "Architected an end-to-end logistics platform that pairs truck route planning with weather-based risk assessment.",
+    "Built Django REST Framework APIs for routing, vehicle load, and weather conditions.",
+    "Built responsive React, TypeScript, and Leaflet dashboards on OpenStreetMap.",
+    "Connected Open-Meteo forecasts so drivers can see wind, rain, and snow risk along a route.",
+    "Owned the architecture, implementation, Docker packaging, and Railway deployment.",
+  ],
+  "angel-extensions": [
+    "Developed and maintained a customized Shopify storefront for hair extension collections and styling products.",
+    "Organized educational content and showroom information into the shopping experience.",
+    "Built responsive product and collection layouts with Liquid, HTML, CSS, and JavaScript.",
+    "Supported storefront performance, SEO, and brand-aligned updates after launch.",
+  ],
+  blade: [
+    "Built full-stack features in React, TypeScript, and Java for contact discovery, audience management, and email outreach.",
+    "Developed REST APIs and MySQL records for contacts and campaigns.",
+    "Integrated the Gmail API and Google OAuth 2.0 so campaigns send from a connected account.",
+    "Ranked contacts by how often they appear in a user's Gmail history.",
+    "Added filtering and message previews before a campaign is sent.",
+  ],
+  "simi-haze": [
+    "Developed and maintained a responsive Shopify beauty storefront with interactive product layouts.",
+    "Added customer reviews and checkout through several payment methods.",
+    "Customized the frontend with JavaScript, Vue.js, Alpine.js, and Tailwind CSS.",
+    "Integrated Klaviyo, Attentive, review platforms, and Microsoft Clarity.",
+  ],
+  mockit: [
+    "Developed and maintained a WordPress apparel mockup platform for artwork uploads and garment customization.",
+    "Built product-image workflows so designers and brands can present mockups.",
+    "Built responsive layouts with PHP, JavaScript, Bootstrap, and jQuery.",
+    "Customized Elementor and Blocksy for the storefront.",
+    "Integrated PayPal, Mailchimp, analytics, WP Rocket, and Cloudflare.",
+  ],
+  workstream: [
+    "Developed Python and Django backend functionality for expenses, leave, performance reviews, and HR workflows.",
+    "Maintained PostgreSQL-backed employee records.",
+    "Connected REST services to the React interfaces used by HR teams.",
+    "Supported Odoo integration and Single Sign-On.",
+    "Worked in a GitLab-based development flow for ongoing HR features.",
+  ],
+  joinedbio: [
+    "Developed full-stack features for a healthcare research marketplace connecting participants with study organizations.",
+    "Engineered Django REST Framework APIs for participant information and study coordination.",
+    "Built React, Next.js, and TypeScript interfaces for the marketplace.",
+    "Implemented PostgreSQL storage with Redis and Celery background processing.",
+    "Contributed to AI-assisted research workflows on Google Cloud and Kubernetes.",
+  ],
+  freightmate: [
+    "Developed dispatch, trip coordination, fleet visibility, invoicing, and reporting features.",
+    "Built operational dashboards for day-to-day fleet work.",
+    "Integrated those dashboards with REST services.",
+    "Supported SQL Server data handling for fleet and trip records.",
+    "Worked with AWS, Terraform, and GitHub Actions for delivery.",
+  ],
+  "princess-dental": [
+    "Developed React Native features for iOS and Android, including reusable components and navigation.",
+    "Built candidate profiles and job discovery for temporary and permanent dental roles.",
+    "Built application and availability workflows.",
+    "Integrated REST APIs for jobs, profiles, and scheduling.",
+    "Added push notifications so candidates and clinics stay updated.",
+  ],
+  "carwash-app": [
+    "Developed web and mobile features for customer registration, single-wash purchases, and monthly memberships.",
+    "Built promotions, referrals, and SMS and email engagement.",
+    "Built an administrative dashboard for customers, memberships, and car wash operations.",
+    "Integrated payment and subscription workflows for recurring memberships and individual purchases.",
+    "Collaborated with the team to deliver features, resolve issues, and improve the application.",
+  ],
+  burndy: [
+    "Developed mobile features for product details, specifications, and documentation in the field.",
+    "Built search and lookup screens for the electrical product catalog.",
+    "Integrated REST APIs so catalog data stays current.",
+    "Kept navigation consistent across iOS and Android with C# and .NET.",
+  ],
+  "abc-storage": [
+    "Developed and maintained Go backend services for storage information and customer inquiries.",
+    "Connected REST APIs to Angular and TypeScript interfaces.",
+    "Used Redis caching so storage details load quickly.",
+    "Supported Docker environments and CI/CD releases.",
+  ],
+};
+
+const CODE: { text: string; cls?: string }[] = [
+  { text: "# rank roads by weather and load", cls: "c-cmt" },
+  { text: "\n" },
+  { text: "def", cls: "c-kw" },
+  { text: " " },
+  { text: "plan_route", cls: "c-fn" },
+  { text: "(origin, destination, load):" },
+  { text: "\n    routes = " },
+  { text: "fetch", cls: "c-fn" },
+  { text: "(origin, destination)" },
+  { text: "\n    weather = " },
+  { text: "forecast", cls: "c-fn" },
+  { text: "(routes)" },
+  { text: "\n    ranked = " },
+  { text: "score", cls: "c-fn" },
+  { text: "(routes, weather, load)" },
+  { text: "\n    " },
+  { text: "return", cls: "c-kw" },
+  { text: " ranked[" },
+  { text: "0", cls: "c-num" },
+  { text: "]" },
+];
+
+const typeCode = (el: HTMLElement, motion: boolean) => {
+  const total = CODE.reduce((sum, token) => sum + token.text.length, 0);
+  const charAt = (index: number) => {
+    let left = index;
+    for (const token of CODE) {
+      if (left < token.text.length) return token.text[left] ?? "";
+      left -= token.text.length;
+    }
+    return "";
+  };
+  const paint = (count: number, caret?: HTMLElement) => {
+    el.replaceChildren();
+    let left = count;
+    for (const token of CODE) {
+      if (left <= 0) break;
+      const slice = token.text.slice(0, left);
+      left -= slice.length;
+      if (!slice) continue;
+      if (token.cls) {
+        const span = document.createElement("span");
+        span.className = token.cls;
+        span.textContent = slice;
+        el.append(span);
+      } else el.append(slice);
+    }
+    if (caret) el.append(caret);
+  };
+  if (!motion) {
+    paint(total);
+    return;
+  }
+  const caret = document.createElement("span");
+  caret.className = "code-caret";
+  caret.setAttribute("aria-hidden", "true");
+  let shown = 0;
+  const step = () => {
+    if (!el.isConnected) return;
+    if (shown >= total) {
+      window.setTimeout(() => {
+        if (!el.isConnected) return;
+        shown = 0;
+        paint(0, caret);
+        window.setTimeout(step, 360);
+      }, 1800);
+      return;
+    }
+    shown += 1;
+    paint(shown, caret);
+    const ch = charAt(shown - 1);
+    const delay = ch === "\n" ? 240 : 42 + Math.random() * 48;
+    window.setTimeout(step, delay);
+  };
+  paint(0, caret);
+  window.setTimeout(step, 480);
+};
 
 const root = document.getElementById("flat");
 if (root) {
@@ -46,12 +220,28 @@ if (root) {
           <p class="flat-lead">${esc(PROFILE.tagline)}</p>
           <div class="flat-actions">
             <a class="flat-primary" href="#flat-projects">View Projects</a>
-            <a class="flat-dark" href="${esc(PROFILE.resume)}" download>Resume</a>
+            <a class="flat-dark" href="${esc(PROFILE.resume)}" target="_blank" rel="noopener">Resume</a>
           </div>
         </div>
-        <figure class="flat-stage">
-          <div class="flat-shift">
-            <img src="flat/workspace.jpg" alt="Developer workspace with frontend, backend, database, cloud, and AI tools" />
+        <figure class="flat-code">
+          <div class="code-tilt">
+            <div class="code-window">
+              <header>
+                <span class="code-dot r"></span>
+                <span class="code-dot y"></span>
+                <span class="code-dot g"></span>
+                <span class="code-file">services/plan.py</span>
+              </header>
+              <pre><code data-code></code></pre>
+            </div>
+            <aside class="code-status" aria-hidden="true">
+              <p>deploy / api</p>
+              <ul>
+                <li><i></i>api <em>ready</em> <span>0.4s</span></li>
+                <li><i></i>routes <em>scored</em> <span>0.2s</span></li>
+                <li><i></i>weather <em>live</em> <span>0.3s</span></li>
+              </ul>
+            </aside>
           </div>
         </figure>
       </section>
@@ -79,13 +269,6 @@ if (root) {
             </ul>
           </aside>
         </div>
-        <div class="flat-focus">
-          ${STRENGTHS.map((s) => `
-            <article class="flat-reveal">
-              <h3>${esc(s.title)}</h3>
-              <p>${esc(s.text)}</p>
-            </article>`).join("")}
-        </div>
         <div class="flat-impact">
           ${ACHIEVEMENTS.slice(0, 3).map((a) => `
             <article class="flat-reveal">
@@ -99,18 +282,35 @@ if (root) {
       <section id="flat-projects" class="flat-block">
         <div class="flat-head flat-reveal">
           <p class="flat-kicker">Project</p>
-          <h2>Selected projects</h2>
+          <h2>Featured projects</h2>
         </div>
         <div class="flat-grid">
-          ${PROJECTS.map((p, i) => `
-            <button type="button" class="flat-card flat-reveal" data-project="${i}">
+          ${PROJECTS.map((p, i) => {
+            const points = (BUILT[p.slug] ?? builtPoints(p.role)).slice(0, 2);
+            const shown = p.tags.slice(0, 4);
+            const extra = p.tags.length - shown.length;
+            return `
+            <article class="flat-card flat-reveal" data-project="${i}" tabindex="0">
               <img src="projects/${esc(p.slug)}/thumb.jpg" alt="" />
-              <div>
-                <p class="flat-kicker">${String(i + 1).padStart(2, "0")} · ${esc(CATEGORIES[p.cat])}</p>
-                <h3>${esc(p.name)}</h3>
-                <p>${esc(p.sub)}</p>
+              <div class="flat-card-body">
+                <div class="flat-card-top">
+                  <h3>${esc(p.name)}</h3>
+                  <span class="flat-card-cat">${esc(CAT_SHORT[p.cat] ?? CATEGORIES[p.cat])}</span>
+                </div>
+                <p class="flat-card-sum">${esc(p.summary)}</p>
+                <ul class="flat-card-built">${points.map((point) => `<li><span>${esc(point)}</span></li>`).join("")}</ul>
+                <p class="flat-card-skill">Skill</p>
+                <div class="flat-card-skills">
+                  ${shown.map((tag) => `<span>${esc(tag)}</span>`).join("")}
+                  ${extra > 0 ? `<span class="is-more">+${extra}</span>` : ""}
+                </div>
+                <div class="flat-card-foot">
+                  <button type="button" data-detail>More detail</button>
+                  <a href="${esc(p.url)}" target="_blank" rel="noopener">Visit Site</a>
+                </div>
               </div>
-            </button>`).join("")}
+            </article>`;
+          }).join("")}
         </div>
       </section>
 
@@ -188,7 +388,7 @@ if (root) {
             <a class="flat-ghost" href="mailto:${esc(PROFILE.email)}">Email</a>
             <a class="flat-ghost" href="${esc(PROFILE.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>
             <a class="flat-ghost" href="${esc(PROFILE.github)}" target="_blank" rel="noopener">GitHub</a>
-            <a class="flat-ghost" href="${esc(PROFILE.resume)}" download>Resume</a>
+            <a class="flat-ghost" href="${esc(PROFILE.resume)}" target="_blank" rel="noopener">Resume</a>
           </div>
         </div>
         ${enterBtn("Open the 3D portfolio", "flat-3d-lg")}
@@ -196,18 +396,22 @@ if (root) {
     </main>
     <dialog class="flat-modal" id="flat-modal">
       <button type="button" class="flat-modal-x" data-close-modal aria-label="Close">×</button>
-      <img class="flat-modal-img" alt="" />
-      <div class="flat-modal-body">
-        <p class="flat-kicker" data-modal="kicker"></p>
-        <h2 data-modal="title"></h2>
-        <p class="flat-modal-sub" data-modal="sub"></p>
-        <h3>Summary</h3>
-        <p data-modal="summary"></p>
-        <h3>What I did</h3>
-        <p data-modal="role"></p>
-        <h3>Skills used</h3>
-        <ul class="flat-modal-skills" data-modal="skills"></ul>
-        <a class="flat-live" data-modal="live" target="_blank" rel="noopener">Live Site</a>
+      <div class="flat-modal-layout">
+        <img class="flat-modal-img" alt="" />
+        <div class="flat-modal-body">
+          <div class="flat-card-top">
+            <h2 data-modal="title"></h2>
+            <span class="flat-card-cat" data-modal="kicker"></span>
+          </div>
+          <p class="flat-modal-sub" data-modal="sub"></p>
+          <h3>Summary</h3>
+          <p data-modal="summary"></p>
+          <h3>What I built</h3>
+          <ul class="flat-modal-built" data-modal="built"></ul>
+          <h3>Skills</h3>
+          <div class="flat-card-skills" data-modal="skills"></div>
+          <a class="flat-live" data-modal="live" target="_blank" rel="noopener">Visit Site</a>
+        </div>
       </div>
     </dialog>
   `;
@@ -386,37 +590,74 @@ if (root) {
     const node = modal?.querySelector(`[data-modal="${key}"]`);
     if (node) node.textContent = value;
   };
+  const fitModal = () => {
+    if (!modal?.open) return;
+    const layout = modal.querySelector<HTMLElement>(".flat-modal-layout");
+    const img = modal.querySelector<HTMLImageElement>(".flat-modal-img");
+    if (!layout || !img) return;
+    modal.style.transform = "none";
+    modal.style.height = "auto";
+    img.style.height = "";
+    layout.style.transform = "none";
+    layout.style.width = "100%";
+    const available = window.innerHeight - 24;
+    const needed = layout.offsetHeight;
+    if (needed <= available) return;
+    const scale = (available - 4) / needed;
+    layout.style.width = `${100 / scale}%`;
+    layout.style.transformOrigin = "top left";
+    layout.style.transform = `scale(${scale})`;
+    modal.style.height = `${Math.ceil(layout.getBoundingClientRect().height)}px`;
+  };
   const openProject = (index: number) => {
     const project = PROJECTS[index];
     if (!modal || !project) return;
     const img = modal.querySelector<HTMLImageElement>(".flat-modal-img");
-    if (img) img.src = `projects/${project.slug}/thumb.jpg`;
-    modalSet("kicker", CATEGORIES[project.cat]);
+    if (img) {
+      img.src = `projects/${project.slug}/thumb.jpg`;
+      img.alt = project.name;
+    }
+    modalSet("kicker", CAT_SHORT[project.cat] ?? CATEGORIES[project.cat]);
     modalSet("title", project.name);
     modalSet("sub", project.sub);
     modalSet("summary", project.summary);
-    modalSet("role", project.role);
+    const built = modal.querySelector("[data-modal='built']");
+    if (built) built.innerHTML = (BUILT[project.slug] ?? builtPoints(project.role)).map((point) => `<li>${esc(point)}</li>`).join("");
     const live = modal.querySelector<HTMLAnchorElement>("[data-modal='live']");
     if (live) live.href = project.url;
     const skills = modal.querySelector("[data-modal='skills']");
-    if (skills) {
-      skills.innerHTML = project.tags.map((tag) => `<li>${skillIcon(tag)}<span>${esc(tag)}</span></li>`).join("");
-    }
-    if (!modal.open) modal.showModal();
+    if (skills) skills.innerHTML = project.tags.map((tag) => `<span>${esc(tag)}</span>`).join("");
+    if (!modal.open) modal.show();
+    requestAnimationFrame(fitModal);
   };
-  root.querySelectorAll<HTMLButtonElement>("[data-project]").forEach((btn) => {
-    btn.addEventListener("click", () => openProject(Number(btn.dataset.project)));
+  root.querySelectorAll<HTMLElement>(".flat-card").forEach((card) => {
+    const open = () => openProject(Number(card.dataset.project));
+    card.addEventListener("click", (event) => {
+      if ((event.target as HTMLElement).closest("a")) return;
+      event.stopPropagation();
+      open();
+    });
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || (event.target as HTMLElement).closest("a, button")) return;
+      event.preventDefault();
+      open();
+    });
   });
+  window.addEventListener("resize", fitModal);
   modal?.querySelector("[data-close-modal]")?.addEventListener("click", () => modal.close());
-  modal?.addEventListener("click", (event) => {
-    if (event.target === modal) modal.close();
+  root.addEventListener("click", (event) => {
+    if (!modal?.open) return;
+    if (event.target instanceof Node && modal.contains(event.target)) return;
+    modal.close();
   });
 
   const sky = root.querySelector<HTMLCanvasElement>(".flat-stars");
   if (sky) paintStars(sky);
 
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const shift = root.querySelector<HTMLElement>(".flat-shift");
+  const codeEl = root.querySelector<HTMLElement>("[data-code]");
+  if (codeEl) typeCode(codeEl, !reduced);
+  const shift = root.querySelector<HTMLElement>(".flat-code");
   const reveals = [...root.querySelectorAll<HTMLElement>(".flat-reveal")];
   if (!reduced) {
     root.classList.add("is-open");
@@ -560,20 +801,6 @@ function mountCampus(block: HTMLElement) {
 }
 
 queueMicrotask(() => document.querySelectorAll<HTMLElement>("[data-campus]").forEach(mountCampus));
-
-function skillIcon(name: string) {
-  const n = name.toLowerCase();
-  const draw = (d: string) =>
-    `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-  if (/react|vue|angular|alpine/.test(n)) return draw("M12 3 4.5 7.2v9.6L12 21l7.5-4.2V7.2L12 3zM12 12 4.5 7.2M12 12l7.5-4.8M12 12v9");
-  if (/html|css|tailwind|responsive|liquid/.test(n)) return draw("M4 4h16v16H4zM8 9h8M8 13h5");
-  if (/shopify|wordpress|elementor/.test(n)) return draw("M6 8h12l-1 12H7L6 8zM9 8V6a3 3 0 0 1 6 0v2");
-  if (/sql|mysql|postgres|mongo|redis|database/.test(n)) return draw("M5 7c0-1.7 3.1-3 7-3s7 1.3 7 3-3.1 3-7 3-7-1.3-7-3zM5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5");
-  if (/aws|docker|google|azure|cloud|kubernetes|terraform|railway|cloudflare/.test(n)) return draw("M7 17h10a4 4 0 0 0 .3-8 5.5 5.5 0 0 0-10.5 1.6A3.4 3.4 0 0 0 7 17z");
-  if (/ios|android|mobile|kotlin/.test(n)) return draw("M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM11 18h2");
-  if (/gmail|oauth|klaviyo|attentive|clarity/.test(n)) return draw("M4 7h16v10H4zM4 7l8 6 8-6");
-  return draw("M8 8 4 12l4 4M16 8l4 4-4 4M13 5l-2 14");
-}
 
 function paintStars(canvas: HTMLCanvasElement) {
   const ctx = canvas.getContext("2d");
