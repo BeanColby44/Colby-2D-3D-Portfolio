@@ -158,7 +158,7 @@ async function start() {
   const intro = new IntroStage(ctx, PROFILE.name);
   const symbols = new SymbolsStage(ctx);
   const layers = new LayersStage(ctx);
-  const timeline = new TimelineStage(ctx, EXPERIENCE.length, EXPERIENCE.map((j) => j.groups.flatMap((g) => g.items.slice(0, 2))));
+  const timeline = new TimelineStage(ctx, EXPERIENCE.length);
   const towers = new TowersStage(ctx, SKILLS);
   const portal = new PortalStage(ctx);
   const gallery = new GalleryStage(ctx, PROJECTS, texLoader, () => {});

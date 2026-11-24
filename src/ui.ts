@@ -32,22 +32,11 @@ export function projectCard(p: Project, i: number, total: number) {
 export function jobPanel(i: number) {
   const j = EXPERIENCE[i];
   return `
-    <div class="job-head">
+    <div class="job-card" data-job="${i}">
       <h3 class="fx">${esc(j.title)}</h3>
-      <p class="job-co">${esc(j.company)} <span>· ${esc(j.type)}</span></p>
-      <p class="job-sum">${esc(j.summary)}</p>
-    </div>
-    <ul class="job-points">${j.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
-    <div class="jg">
-      ${j.groups
-        .map(
-          (g, gi) => `
-        <div class="jg-row" style="--c:${g.color}">
-          <span class="jg-k">${esc(g.group)}</span>
-          <div class="jg-items">${g.items.map((s, k) => `<span class="stack-word" style="--i:${gi * 2 + k * 0.6}">${esc(s)}</span>`).join("")}</div>
-        </div>`
-        )
-        .join("")}
+      <p class="job-co">${esc(j.company)}</p>
+      <p class="job-when">${esc(j.start)} – ${esc(j.end)}</p>
+      <p class="job-place">${esc(j.place)}</p>
     </div>`;
 }
 
@@ -180,7 +169,7 @@ export function buildStory(root: HTMLElement) {
     </div>
     <div class="full sr-only">
       <h2>Career journey</h2>
-      ${EXPERIENCE.map((j) => `<article><h3>${esc(j.title)}, ${esc(j.company)}</h3><p>${j.start} – ${j.end} · ${esc(j.type)}</p><p>${esc(j.summary)}</p><ul>${j.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul></article>`).join("")}
+      ${EXPERIENCE.map((j) => `<article><h3>${esc(j.title)}, ${esc(j.company)}</h3><p>${j.start} – ${j.end} · ${esc(j.place)}</p></article>`).join("")}
       <article><h3>${esc(PROFILE.education.degree)}</h3><p>${esc(PROFILE.education.school)} · ${esc(PROFILE.education.years)} · Gainesville, FL</p></article>
     </div>
   </section>

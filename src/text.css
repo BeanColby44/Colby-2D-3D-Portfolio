@@ -52,7 +52,8 @@
 
 /* sizes for display headings */
 .panel h2.fx { font-size: clamp(30px, 3.3vw, 46px); margin-bottom: 18px; }
-.exp-intro h2.fx, .gal-intro h2.fx { font-size: clamp(48px, 8.4vw, 118px); line-height: .95; }
+.exp-intro h2.fx { font-size: clamp(32px, 4.2vw, 52px); line-height: 1; }
+.gal-intro h2.fx { font-size: clamp(48px, 8.4vw, 118px); line-height: .95; }
 .portal-copy h2.fx { font-size: clamp(36px, 6vw, 76px); }
 .contact-title.fx { font-size: clamp(40px, 7vw, 100px); background: none; -webkit-background-clip: initial; background-clip: initial; color: inherit; line-height: 1; }
 .project-card h3.fx { font-size: 32px; letter-spacing: -.03em; }

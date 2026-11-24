@@ -35,6 +35,7 @@ export interface Job {
   title: string;
   company: string;
   type: string;
+  place: string;
   summary: string;
   points: string[];
   /** Skills from the résumé, grouped by area. */
@@ -61,7 +62,7 @@ const job = (j: Omit<Job, "stack" | "groups"> & { groups: [keyof typeof G, strin
 // Career copy and skills follow the résumé (Nov 2026).
 export const EXPERIENCE: Job[] = [
   job({
-    start: "11/2024", end: "10/2026", title: "Full Stack Engineer", company: "ZCO Corporation", type: "Contract · Nashua",
+    start: "11/2024", end: "10/2026", title: "Full Stack Engineer", company: "ZCO Corporation", type: "Contract · Nashua", place: "Nashua",
     summary: "Developed web and mobile applications for financial technology and business platforms, with a focus on secure backend systems, application performance, and simpler business processes.",
     points: [
       "Developed web applications using React, Java, and Spring Boot, improving system performance and efficiency.",
@@ -81,7 +82,7 @@ export const EXPERIENCE: Job[] = [
     ],
   }),
   job({
-    start: "10/2021", end: "10/2024", title: "Backend Developer", company: "Arbisoft", type: "Contract · Plano",
+    start: "10/2021", end: "10/2024", title: "Backend Developer", company: "Arbisoft", type: "Contract · Plano", place: "Plano",
     summary: "Developed AI-powered healthcare applications and IT solutions, improving research workflows, automating business processes, and building scalable web applications.",
     points: [
       "Developed healthcare web applications using Python, Django, React, and TypeScript to improve business workflows.",
@@ -101,7 +102,7 @@ export const EXPERIENCE: Job[] = [
     ],
   }),
   job({
-    start: "07/2019", end: "09/2021", title: "Software Engineer", company: "Designli", type: "Greenville",
+    start: "07/2019", end: "09/2021", title: "Software Engineer", company: "Designli", type: "Greenville", place: "Greenville",
     summary: "Developed SaaS platforms, business applications, and e-commerce websites, with a focus on responsive applications, website performance, and automated business workflows.",
     points: [
       "Developed responsive websites using WordPress, Elementor, PHP, MySQL, HTML, CSS, JavaScript, and jQuery.",
@@ -193,35 +194,35 @@ export const PROJECTS: Project[] = [
     slug: "weather-routing", name: "Weather-Aware Truck Routing", sub: "Logistics Planning Platform", cat: "platform",
     summary: "A logistics planning application that helps truck drivers compare routes based on forecast weather and vehicle load. It combines interactive maps, routing services, and weather data to highlight wind, rain, and snow risks along a journey.",
     role: "Architected an end-to-end logistics platform that pairs truck route planning with weather-based risk assessment. Built Django REST Framework APIs for routing, vehicle load, and weather conditions, and responsive React, TypeScript, and Leaflet dashboards with OpenStreetMap and Open-Meteo. Owned architecture, implementation, Docker, and Railway deployment.",
-    tags: ["React", "TypeScript", "Vite", "Python", "Django REST Framework", "Leaflet", "OpenStreetMap", "Open-Meteo", "Docker", "Railway"],
+    tags: ["React", "TypeScript", "Vite", "Python", "Django REST Framework", "Leaflet", "OpenStreetMap", "Open-Meteo", "Docker", "Gunicorn", "WhiteNoise", "Railway"],
     url: "https://weather-aware-truck-routing.up.railway.app/", linkLabel: "Visit website",
   },
   {
     slug: "angel-extensions", name: "Angel Extensions", sub: "Hair Extensions E-commerce · Australia", cat: "shopify",
     summary: "A Shopify storefront for professional hair extensions and styling products. Product collections, educational content, and showroom information are organized into a responsive shopping experience.",
     role: "Developed and maintained a customized Shopify storefront for hair extension collections, styling products, educational content, and showroom information. Built responsive product and collection layouts with Liquid, HTML, CSS, and JavaScript, and supported performance, SEO, and brand-aligned storefront maintenance.",
-    tags: ["Shopify", "Liquid", "HTML5", "CSS3", "JavaScript", "Cloudflare", "SEO", "Responsive Web Design"],
+    tags: ["Shopify", "Liquid", "HTML5", "CSS3", "JavaScript", "Shopify Theme Customization", "Cloudflare", "SEO", "Responsive Web Design"],
     url: "https://angelextensions.com.au/", linkLabel: "Visit store",
   },
   {
     slug: "blade", name: "Blade", sub: "AI-Assisted Contact Discovery & Email Outreach", cat: "platform", featured: true,
     summary: "A contact discovery and email outreach platform that finds relevant people in a user's Gmail history, ranks them by interaction frequency, and sends personalized campaigns through a connected Gmail account.",
     role: "Built full-stack features in React, TypeScript, and Java for contact discovery, audience management, and email outreach. Developed REST APIs and MySQL records for contacts and campaigns, integrated the Gmail API and Google OAuth 2.0, and added ranking, filtering, and message previews.",
-    tags: ["React", "TypeScript", "Java", "MySQL", "REST APIs", "Gmail API", "Google OAuth 2.0", "SQL"],
+    tags: ["React", "TypeScript", "Java", "MySQL", "RESTful APIs", "Google Gmail API", "Google OAuth 2.0", "HTML5", "CSS3", "JavaScript", "SQL", "Third-Party API Integration", "Authentication & Authorization", "Git"],
     url: "https://blade.net/", linkLabel: "Visit website",
   },
   {
     slug: "simi-haze", name: "Simi Haze Beauty", sub: "Beauty E-commerce Platform", cat: "shopify", featured: true,
     summary: "A Shopify beauty storefront where customers browse products, read reviews, and check out through several payment methods, with marketing and analytics integrations alongside the shopping experience.",
     role: "Developed and maintained a responsive Shopify beauty storefront with interactive product layouts and customer reviews. Customized the frontend with JavaScript, Vue.js, Alpine.js, and Tailwind CSS, and integrated Klaviyo, Attentive, review platforms, Microsoft Clarity, and multiple payment options.",
-    tags: ["Shopify", "JavaScript", "Vue.js", "Alpine.js", "Tailwind CSS", "Klaviyo", "Attentive", "Microsoft Clarity"],
+    tags: ["Shopify", "HTML5", "CSS3", "JavaScript", "Vue.js", "Alpine.js", "Tailwind CSS", "Klaviyo", "Attentive", "Microsoft Clarity", "Judge.me", "Yotpo", "Cloudflare", "Fastly", "PayPal", "Venmo", "Google Pay", "Apple Pay"],
     url: "https://simihazebeauty.com/", linkLabel: "Visit store",
   },
   {
     slug: "mockit", name: "Mockit", sub: "Online Apparel Mockup Generator", cat: "wordpress",
     summary: "An apparel mockup platform for designers, clothing brands, and e-commerce sellers. The site supports artwork uploads, garment customization, and mockup presentation, with payment and marketing tools built into the customer workflow.",
     role: "Developed and maintained a WordPress apparel mockup platform for artwork uploads, garment customization, and product image workflows. Built responsive layouts with PHP, JavaScript, Bootstrap, and jQuery, customized Elementor and Blocksy, and integrated PayPal, Mailchimp, analytics, WP Rocket, and Cloudflare.",
-    tags: ["WordPress", "PHP", "MySQL", "JavaScript", "Elementor", "Blocksy", "PayPal", "Mailchimp", "Cloudflare"],
+    tags: ["WordPress", "PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "Bootstrap", "jQuery", "Elementor", "Blocksy", "PayPal", "Mailchimp", "Google Analytics", "Cloudflare", "WP Rocket"],
     url: "https://mock-it.co/", linkLabel: "Visit website",
   },
   {
@@ -235,21 +236,21 @@ export const PROJECTS: Project[] = [
     slug: "joinedbio", name: "JoinedBio", sub: "AI-Powered Health Research Marketplace", cat: "platform", featured: true,
     summary: "A digital health research marketplace that connects prospective participants with organizations running studies. The platform supports participant information, study coordination, and AI-assisted research workflows.",
     role: "Developed full-stack features for a healthcare research marketplace. Engineered Django REST Framework APIs, built React, Next.js, and TypeScript interfaces, implemented PostgreSQL with Redis and Celery background processing, and contributed to AI-assisted features on Google Cloud and Kubernetes.",
-    tags: ["React", "Next.js", "TypeScript", "Python", "Django", "Django REST Framework", "PostgreSQL", "Redis", "Celery", "Google Cloud", "Kubernetes"],
+    tags: ["React", "Next.js", "TypeScript", "Python", "Django", "Django REST Framework", "PostgreSQL", "Redis", "Celery", "Google Cloud", "Kubernetes", "AI Integration"],
     url: "https://joined.bio/", linkLabel: "Visit website",
   },
   {
     slug: "freightmate", name: "Freightmate", sub: "Fleet Management & Logistics SaaS", cat: "platform",
     summary: "A fleet management and logistics SaaS platform for dispatch, trip coordination, fleet visibility, invoicing, and reporting, with operational interfaces connected to backend services.",
-    role: "Developed features covering dispatch, trip coordination, fleet visibility, invoicing, and reporting. Built operational dashboards, integrated them with REST services, supported SQL Server data handling, and worked with AWS, Terraform, and GitHub Actions.",
-    tags: ["TypeScript", "Java", "SQL Server", "REST APIs", "AWS", "Terraform", "GitHub Actions"],
+    role: "Developed Angular and JavaScript dashboards and C# / .NET services for dispatch, trip coordination, fleet visibility, invoicing, and reporting. Integrated them with REST services, supported SQL Server data handling, and worked with AWS, Terraform, and GitHub Actions.",
+    tags: ["Angular", "JavaScript", "C#", ".NET", "SQL Server", "REST APIs", "AWS", "Terraform", "GitHub Actions"],
     url: "https://www.freightmateapp.com/", linkLabel: "Visit website",
   },
   {
     slug: "princess-dental", name: "Princess Dental Staffing", sub: "Mobile Recruitment Application", cat: "mobile",
     summary: "A mobile recruitment application that connects dental professionals with temporary and permanent jobs. It supports profiles, job discovery, applications, availability, scheduling, and notifications.",
     role: "Developed React Native features for iOS and Android, including reusable components, navigation, candidate profiles, and job discovery. Built application and availability workflows, integrated REST APIs, and added push notifications.",
-    tags: ["React Native", "JavaScript", "REST APIs", "iOS", "Android", "Push Notifications", "Scheduling"],
+    tags: ["React Native", "JavaScript", "REST APIs", "iOS", "Android", "Push Notifications", "Job Search", "Profile Management", "Scheduling"],
     url: "https://www.princessdentalstaffing.com/", linkLabel: "Visit website",
   },
   {
@@ -263,14 +264,14 @@ export const PROJECTS: Project[] = [
     slug: "burndy", name: "Burndy Intelli Tools", sub: "Mobile Product Information App", cat: "mobile",
     summary: "A mobile product-reference app for electrical professionals who need product details in the field, including lookup, technical specifications, and documentation on iOS and Android.",
     role: "Developed mobile features for product details, specifications, and documentation. Built search and lookup screens, integrated REST APIs for catalog data, and kept navigation consistent across iOS and Android with C# and .NET.",
-    tags: ["C#", ".NET", "SQL", "REST APIs", "iOS", "Android"],
+    tags: ["C#", ".NET", "SQL", "REST APIs", "iOS", "Android", "Mobile Application Development"],
     url: "https://apps.apple.com/us/app/burndy-connect/id1294811019", linkLabel: "View on App Store",
   },
   {
     slug: "abc-storage", name: "ABC Storage Kingston", sub: "Self-Storage Management & Booking", cat: "platform", featured: true,
     summary: "A self-storage website that helps prospective customers review storage information and submit inquiries. The application pairs an Angular interface with Go backend services, caching, and automated deployment.",
     role: "Developed and maintained Go backend services for storage information and customer inquiries. Connected REST APIs to Angular and TypeScript interfaces, used Redis for caching, and supported Docker environments and CI/CD releases.",
-    tags: ["Angular", "TypeScript", "Go", "Redis", "Docker", "CI/CD", "REST APIs"],
+    tags: ["Angular", "TypeScript", "Go (Golang)", "Redis", "Docker", "CI/CD", "REST APIs", "Backend Development", "Web Application Development"],
     url: "https://abcstoragekingston.com/", linkLabel: "Visit website",
   },
 ];

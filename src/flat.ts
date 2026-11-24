@@ -78,7 +78,7 @@ const BUILT: Record<string, string[]> = {
     "Contributed to AI-assisted research workflows on Google Cloud and Kubernetes.",
   ],
   freightmate: [
-    "Developed dispatch, trip coordination, fleet visibility, invoicing, and reporting features.",
+    "Developed dispatch, trip coordination, fleet visibility, invoicing, and reporting features with Angular, JavaScript, C#, and .NET.",
     "Built operational dashboards for day-to-day fleet work.",
     "Integrated those dashboards with REST services.",
     "Supported SQL Server data handling for fleet and trip records.",
@@ -338,16 +338,11 @@ if (root) {
         <ol class="flat-timeline">
           ${EXPERIENCE.map((job) => `
             <li>
-              <article class="flat-job flat-reveal">
+              <article class="flat-post flat-reveal">
+                <p class="flat-role-when">${ICON.cal}<span>${esc(job.start)} – ${esc(job.end)}</span></p>
                 <h3>${esc(job.title)}</h3>
-                <p class="flat-job-co">${ICON.work}<span>${esc(job.company)}</span></p>
-                <p class="flat-job-meta">
-                  <span>${ICON.cal}${esc(job.start)} – ${esc(job.end)}</span>
-                  <span>${ICON.pin}${esc(job.type)}</span>
-                </p>
-                <p>${esc(job.summary)}</p>
-                <ul>${job.points.map((point) => `<li>${esc(point)}</li>`).join("")}</ul>
-                <div class="flat-tags">${job.stack.map((s) => `<span>${esc(s)}</span>`).join("")}</div>
+                <p class="flat-role-co">${ICON.work}<span>${esc(job.company)}</span></p>
+                <p class="flat-role-place">${ICON.pin}<span>${esc(job.place)}</span></p>
               </article>
             </li>`).join("")}
         </ol>
