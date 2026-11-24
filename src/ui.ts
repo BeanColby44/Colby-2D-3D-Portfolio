@@ -90,7 +90,7 @@ export function buildStory(root: HTMLElement) {
         <p class="hero-tag rv" data-show="0,0.22" style="--d:.12s">${esc(PROFILE.tagline)}</p>
         <div class="hero-ctas rv" data-show="0,0.22" style="--d:.24s">
           <a class="btn btn-primary" href="#projects" data-jump="projects">View my work ${ICON.arrow}</a>
-          <a class="btn btn-ghost" href="${PROFILE.resume}" download>${ICON.down} Download résumé</a>
+          <a class="btn btn-ghost" href="${PROFILE.resume}" download>${ICON.down} Download Resume</a>
         </div>
         <img class="hero-mark rv" data-show="0,0.22" style="--d:.36s" src="flat/University/University%20of%20Florida%20Seal%20Line%20Art.png" alt="University of Florida" />
       </div>
@@ -291,7 +291,7 @@ export function buildStory(root: HTMLElement) {
           <a href="mailto:${PROFILE.email}">${ICON.mail}<span>${esc(PROFILE.email)}</span></a>
           <a href="${PROFILE.linkedin}" target="_blank" rel="noopener">${ICON.in}<span>LinkedIn</span></a>
           <a href="${PROFILE.github}" target="_blank" rel="noopener">${ICON.gh}<span>GitHub</span></a>
-          <a href="${PROFILE.resume}" download>${ICON.down}<span>Résumé (PDF)</span></a>
+          <a href="${PROFILE.resume}" download>${ICON.down}<span>Resume (PDF)</span></a>
         </div>
         <div class="edu rv" data-show="0.36,1" style="--d:.32s">
           <span class="edu-k">Education</span>

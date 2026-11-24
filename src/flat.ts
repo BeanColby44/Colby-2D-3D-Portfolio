@@ -188,7 +188,7 @@ if (root) {
             <a class="flat-ghost" href="mailto:${esc(PROFILE.email)}">Email</a>
             <a class="flat-ghost" href="${esc(PROFILE.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>
             <a class="flat-ghost" href="${esc(PROFILE.github)}" target="_blank" rel="noopener">GitHub</a>
-            <a class="flat-ghost" href="${esc(PROFILE.resume)}" download>Résumé</a>
+            <a class="flat-ghost" href="${esc(PROFILE.resume)}" download>Resume</a>
           </div>
         </div>
         ${enterBtn("Open the 3D portfolio", "flat-3d-lg")}
