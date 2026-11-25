@@ -61,17 +61,21 @@ initText(reduced);
 wireSound();
 
 function wireSound() {
-  const btn = document.getElementById("sndBtn")!;
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>("[data-sound]")];
   const sync = (on: boolean) => {
-    btn.setAttribute("aria-pressed", String(on));
-    btn.setAttribute("aria-label", on ? "Sound on" : "Sound off");
+    for (const btn of buttons) {
+      btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute("aria-label", on ? "Mute sound" : "Unmute sound");
+    }
   };
   sync(sound.enabled);
   sound.onChange(sync);
-  btn.addEventListener("click", () => {
-    sound.unlock();
-    sound.toggle();
-  });
+  for (const btn of buttons) {
+    btn.addEventListener("click", () => {
+      sound.unlock();
+      sound.toggle();
+    });
+  }
   // browsers only allow audio after a gesture
   const wake = () => sound.unlock();
   window.addEventListener("pointerdown", wake);

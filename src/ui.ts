@@ -1,4 +1,5 @@
 import { ACHIEVEMENTS, CATEGORIES, EXPERIENCE, METRICS, PROFILE, PROJECTS, SKILLS, type Project, STRENGTHS, WORKFLOW, PROBLEMS, EXPLORING } from "./data";
+import { skillIcon } from "./skill-icons";
 
 const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
@@ -11,7 +12,8 @@ const ICON = {
   gh: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>',
 };
 
-const chips = (items: string[]) => `<div class="chips">${items.map((i) => `<span class="chip">${esc(i)}</span>`).join("")}</div>`;
+const chips = (items: string[], mark = false) =>
+  `<div class="chips">${items.map((i) => `<span class="chip">${mark ? skillIcon(i) : ""}${esc(i)}</span>`).join("")}</div>`;
 
 export function projectCard(p: Project, i: number, total: number) {
   return `
@@ -48,7 +50,7 @@ export function skillPanel(i: number) {
       <h3 class="fx">${esc(g.name)}</h3>
       <span class="sk-count">${g.items.length} skills</span>
     </div>
-    ${chips(g.items)}`;
+    ${chips(g.items, true)}`;
 }
 
 export const CHAPTERS = [
@@ -115,7 +117,6 @@ export function buildStory(root: HTMLElement) {
         <ul class="facts">
           <li><b>7+</b><span>Years experience</span></li>
           <li><b>${EXPERIENCE.length}</b><span>Companies</span></li>
-          <li><b>${PROJECTS.length}</b><span>Shipped projects</span></li>
         </ul>
         <p class="meta-line">${esc(PROFILE.location)} · Remote</p>
       </div>

@@ -103,6 +103,7 @@ html.dragging, html.dragging * { user-select: none; }
 .explore-list li.on p { max-height: 80px; opacity: 1; }
 
 .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 14px; perspective: 1000px; }
+.metrics-grid .metric:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .metrics-grid .metric { padding: 16px 14px; }
 .metrics-grid .metric b { font-size: clamp(34px, 3.6vw, 52px); }
 .metrics-grid .metric span { font-size: 12.5px; }

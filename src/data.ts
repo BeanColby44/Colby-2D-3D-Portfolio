@@ -11,10 +11,9 @@ export const PROFILE = {
   github: "https://github.com/BeanColby44",
   resume: "Colby-Bean-Resume.pdf",
   summary: [
-    "Senior Full Stack Engineer with 7+ years of experience building enterprise web applications, scalable backend systems, and cloud-based business solutions.",
-    "Skilled in React, Angular, JavaScript/TypeScript, Java, Python, Node.js, C#, Spring Boot, MongoDB, REST APIs, and SQL, with expertise in responsive frontend development, backend architecture, API integration, and database management.",
-    "Experienced in enterprise SaaS platforms, mobile-connected applications, and cloud infrastructure using Docker, AWS, Kubernetes, and CI/CD pipelines.",
-    "Strong background in software optimization, Agile development, and delivering reliable applications that improve business efficiency and user experience.",
+    "Senior Full Stack & Mobile Engineer with deep expertise architecting scalable web and cross-platform mobile applications using Java, C#, .NET, React, and TypeScript.",
+    "Experienced in delivering high-concurrency mobile solutions (React Native, .NET MAUI, Blazor Hybrid) alongside cloud-native architectures on AWS and Google Cloud.",
+    "Proven adaptability across enterprise stacks—when project requirements called for Python-based AI and research workflows, rapidly learned Python and Django to build and ship production platforms serving 100,000+ participants.",
   ],
   education: {
     degree: "Bachelor of Science in Computer Science",
@@ -123,9 +122,9 @@ export const EXPERIENCE: Job[] = [
 ];
 
 export const ACHIEVEMENTS = [
-  { title: "Sped Up Development by 50%", text: "Built reusable components and automated tests at ZCO Corporation, speeding up development by 50%." },
-  { title: "Cut Manual Research by 70%", text: "Integrated LLM APIs and OCR at Arbisoft to automate data extraction and reduce manual research tasks by 70%." },
-  { title: "Reduced Coding Time by 30%", text: "Used Claude Code, Codex, and context engineering to speed up development and reduce coding time by 30%." },
+  { title: "Raised Engineering Efficiency by 32%", text: "Strengthened API security and automated regression testing, lifting engineering efficiency by 32%." },
+  { title: "Cut Manual Research by 70%", text: "Integrated LLM and OCR services to automate clinical document extraction and cut manual research time by 70%." },
+  { title: "Boosted Load Speed by 50%", text: "Tuned SQL Server and PostgreSQL plans and React rendering, boosting application load speed by 50%." },
   { title: "Optimized Backend Processing", text: "Tuned Java and SQL services to reduce manual processing and improve storage, retrieval, and system efficiency." },
   { title: "Strengthened Cloud Delivery", text: "Deployed with Docker, Kubernetes, Google Cloud, AWS, Terraform, and GitHub Actions to make releases more reliable." },
 ];
@@ -140,11 +139,11 @@ export interface SkillGroup {
 export const SKILLS: SkillGroup[] = [
   {
     name: "Frontend Development", short: "Frontend", color: "#22d3ee",
-    items: ["React.js", "Angular", "Vue.js", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS", "Responsive Design", "Reactive Forms", "Component Architecture", "State Management"],
+    items: ["React.js", "Angular", "Next.js", "JavaScript", "TypeScript", "HTML5", "CSS3", "Tailwind CSS"],
   },
   {
     name: "Backend Development", short: "Backend", color: "#8b5cf6",
-    items: ["Python", "Django", "Django REST Framework", "FastAPI", "Flask", "Java", "Spring Boot", "Spring Framework", "C#", "ASP.NET Core", ".NET", "Go (Golang)", "Node.js", "Express.js", "PHP", "Laravel", "REST APIs", "Microservices", "Authentication", "Asynchronous Processing", "Concurrent Processing"],
+    items: ["Python", "Django", "Django REST Framework", "FastAPI", "Flask", "Java", "Spring Boot", "Spring Framework", "C#", "ASP.NET Core", ".NET", "Node.js", "PHP", "Laravel", "REST APIs"],
   },
   {
     name: "Databases", short: "Databases", color: "#3b82f6",
@@ -152,7 +151,7 @@ export const SKILLS: SkillGroup[] = [
   },
   {
     name: "AI & LLM Engineering", short: "AI & LLM", color: "#e879f9",
-    items: ["Generative AI", "LLM APIs", "AI Agents", "Agent Orchestration", "MCP", "LangChain", "RAG", "Prompt Engineering", "Context Engineering", "OCR", "Document Processing", "Machine Learning", "Claude Code", "OpenAI Codex", "Cursor", "Microsoft Copilot Studio"],
+    items: ["Generative AI", "LLM APIs", "AI Agents", "Agent Orchestration", "MCP", "LangChain", "RAG", "OCR", "Document Processing", "Machine Learning", "Claude Code", "OpenAI Codex", "Cursor"],
   },
   {
     name: "Cloud & DevOps", short: "Cloud", color: "#38bdf8",
@@ -161,10 +160,6 @@ export const SKILLS: SkillGroup[] = [
   {
     name: "Mobile Development", short: "Mobile", color: "#a78bfa",
     items: ["React Native", ".NET MAUI", "Kotlin", "iOS", "Android", "Mobile Backend Services", "API Integration", "Data Synchronization"],
-  },
-  {
-    name: "Engineering Practices & Tools", short: "Practices", color: "#f472b6",
-    items: ["Git", "GitHub", "Agile", "Scrum", "Automated Testing", "Debugging", "Code Reviews", "Software Architecture", "Performance Optimization", "Third-Party Integrations", "Workflow Automation", "Enterprise Applications", "SaaS Development", "API Design", "Technical Troubleshooting"],
   },
 ];
 
@@ -188,98 +183,97 @@ export interface Project {
   linkLabel: string;
 }
 
-// Order follows the project list (Colby Lee Bean-project.docx).
+// Order follows Colby_Lee_Bean_Professional_Project_Portfolio.docx.
 export const PROJECTS: Project[] = [
   {
-    slug: "weather-routing", name: "Weather-Aware Truck Routing", sub: "Logistics Planning Platform", cat: "platform",
-    summary: "A logistics planning application that helps truck drivers compare routes based on forecast weather and vehicle load. It combines interactive maps, routing services, and weather data to highlight wind, rain, and snow risks along a journey.",
-    role: "Architected an end-to-end logistics platform that pairs truck route planning with weather-based risk assessment. Built Django REST Framework APIs for routing, vehicle load, and weather conditions, and responsive React, TypeScript, and Leaflet dashboards with OpenStreetMap and Open-Meteo. Owned architecture, implementation, Docker, and Railway deployment.",
-    tags: ["React", "TypeScript", "Vite", "Python", "Django REST Framework", "Leaflet", "OpenStreetMap", "Open-Meteo", "Docker", "Gunicorn", "WhiteNoise", "Railway"],
-    url: "https://weather-aware-truck-routing.up.railway.app/", linkLabel: "Visit website",
-  },
-  {
-    slug: "angel-extensions", name: "Angel Extensions", sub: "Hair Extensions E-commerce · Australia", cat: "shopify",
-    summary: "A Shopify storefront for professional hair extensions and styling products. Product collections, educational content, and showroom information are organized into a responsive shopping experience.",
-    role: "Developed and maintained a customized Shopify storefront for hair extension collections, styling products, educational content, and showroom information. Built responsive product and collection layouts with Liquid, HTML, CSS, and JavaScript, and supported performance, SEO, and brand-aligned storefront maintenance.",
-    tags: ["Shopify", "Liquid", "HTML5", "CSS3", "JavaScript", "Shopify Theme Customization", "Cloudflare", "SEO", "Responsive Web Design"],
-    url: "https://angelextensions.com.au/", linkLabel: "Visit store",
-  },
-  {
-    slug: "blade", name: "Blade", sub: "AI-Assisted Contact Discovery & Email Outreach", cat: "platform", featured: true,
-    summary: "A contact discovery and email outreach platform that finds relevant people in a user's Gmail history, ranks them by interaction frequency, and sends personalized campaigns through a connected Gmail account.",
-    role: "Built full-stack features in React, TypeScript, and Java for contact discovery, audience management, and email outreach. Developed REST APIs and MySQL records for contacts and campaigns, integrated the Gmail API and Google OAuth 2.0, and added ranking, filtering, and message previews.",
-    tags: ["React", "TypeScript", "Java", "MySQL", "RESTful APIs", "Google Gmail API", "Google OAuth 2.0", "HTML5", "CSS3", "JavaScript", "SQL", "Third-Party API Integration", "Authentication & Authorization", "Git"],
-    url: "https://blade.net/", linkLabel: "Visit website",
-  },
-  {
-    slug: "simi-haze", name: "Simi Haze Beauty", sub: "Beauty E-commerce Platform", cat: "shopify", featured: true,
-    summary: "A Shopify beauty storefront where customers browse products, read reviews, and check out through several payment methods, with marketing and analytics integrations alongside the shopping experience.",
-    role: "Developed and maintained a responsive Shopify beauty storefront with interactive product layouts and customer reviews. Customized the frontend with JavaScript, Vue.js, Alpine.js, and Tailwind CSS, and integrated Klaviyo, Attentive, review platforms, Microsoft Clarity, and multiple payment options.",
-    tags: ["Shopify", "HTML5", "CSS3", "JavaScript", "Vue.js", "Alpine.js", "Tailwind CSS", "Klaviyo", "Attentive", "Microsoft Clarity", "Judge.me", "Yotpo", "Cloudflare", "Fastly", "PayPal", "Venmo", "Google Pay", "Apple Pay"],
-    url: "https://simihazebeauty.com/", linkLabel: "Visit store",
-  },
-  {
-    slug: "mockit", name: "Mockit", sub: "Online Apparel Mockup Generator", cat: "wordpress",
-    summary: "An apparel mockup platform for designers, clothing brands, and e-commerce sellers. The site supports artwork uploads, garment customization, and mockup presentation, with payment and marketing tools built into the customer workflow.",
-    role: "Developed and maintained a WordPress apparel mockup platform for artwork uploads, garment customization, and product image workflows. Built responsive layouts with PHP, JavaScript, Bootstrap, and jQuery, customized Elementor and Blocksy, and integrated PayPal, Mailchimp, analytics, WP Rocket, and Cloudflare.",
-    tags: ["WordPress", "PHP", "MySQL", "JavaScript", "HTML5", "CSS3", "Bootstrap", "jQuery", "Elementor", "Blocksy", "PayPal", "Mailchimp", "Google Analytics", "Cloudflare", "WP Rocket"],
-    url: "https://mock-it.co/", linkLabel: "Visit website",
-  },
-  {
-    slug: "workstream", name: "Workstream", sub: "HR Management Platform", cat: "platform",
-    summary: "An HR management platform for employee administration, including expenses, leave requests, performance reviews, and related business processes connected to frontend interfaces and enterprise systems.",
-    role: "Developed Python and Django backend functionality for expenses, leave, performance reviews, and HR workflows. Maintained PostgreSQL-backed employee records, connected REST services to React interfaces, and supported Odoo integration, Single Sign-On, and GitLab-based development.",
-    tags: ["Python", "Django", "PostgreSQL", "React", "REST APIs", "Odoo Integration", "Single Sign-On", "GitLab"],
-    url: "https://www.workstream.us/", linkLabel: "Visit website",
-  },
-  {
     slug: "joinedbio", name: "JoinedBio", sub: "AI-Powered Health Research Marketplace", cat: "platform", featured: true,
-    summary: "A digital health research marketplace that connects prospective participants with organizations running studies. The platform supports participant information, study coordination, and AI-assisted research workflows.",
-    role: "Developed full-stack features for a healthcare research marketplace. Engineered Django REST Framework APIs, built React, Next.js, and TypeScript interfaces, implemented PostgreSQL with Redis and Celery background processing, and contributed to AI-assisted features on Google Cloud and Kubernetes.",
-    tags: ["React", "Next.js", "TypeScript", "Python", "Django", "Django REST Framework", "PostgreSQL", "Redis", "Celery", "Google Cloud", "Kubernetes", "AI Integration"],
+    summary: "A digital health research marketplace that connects prospective participants with organizations running studies. Web portals, backend APIs, and asynchronous processing support participant information, study coordination, and AI-assisted research workflows.",
+    role: "Built the user-facing portals and API gateway with React, Next.js, TypeScript, and Node.js (NestJS), backed by PostgreSQL and Redis. Built a separate C# and .NET microservice that normalized partner health records and synced them through REST APIs. Used Claude Code, Cursor, Codex, and GitHub Copilot to shorten an estimated one-year roadmap to six months, and paired strict eligibility rules with LLM reasoning so manual review time fell by 70%. Packaged the Node.js and .NET services in Docker for Google Cloud and Kubernetes.",
+    tags: ["C#", ".NET", "TypeScript", "Node.js", "NestJS", "React", "Next.js", "PostgreSQL", "Redis", "LLM APIs", "AI Integration", "Docker", "Git", "Google Cloud", "Kubernetes", "Claude Code", "Cursor", "Codex"],
     url: "https://joined.bio/", linkLabel: "Visit website",
   },
   {
-    slug: "freightmate", name: "Freightmate", sub: "Fleet Management & Logistics SaaS", cat: "platform",
-    summary: "A fleet management and logistics SaaS platform for dispatch, trip coordination, fleet visibility, invoicing, and reporting, with operational interfaces connected to backend services.",
-    role: "Developed Angular and JavaScript dashboards and C# / .NET services for dispatch, trip coordination, fleet visibility, invoicing, and reporting. Integrated them with REST services, supported SQL Server data handling, and worked with AWS, Terraform, and GitHub Actions.",
-    tags: ["Angular", "JavaScript", "C#", ".NET", "SQL Server", "REST APIs", "AWS", "Terraform", "GitHub Actions"],
-    url: "https://www.freightmateapp.com/", linkLabel: "Visit website",
-  },
-  {
-    slug: "princess-dental", name: "Princess Dental Staffing", sub: "Mobile Recruitment Application", cat: "mobile",
-    summary: "A mobile recruitment application that connects dental professionals with temporary and permanent jobs. It supports profiles, job discovery, applications, availability, scheduling, and notifications.",
-    role: "Developed React Native features for iOS and Android, including reusable components, navigation, candidate profiles, and job discovery. Built application and availability workflows, integrated REST APIs, and added push notifications.",
-    tags: ["React Native", "JavaScript", "REST APIs", "iOS", "Android", "Push Notifications", "Job Search", "Profile Management", "Scheduling"],
-    url: "https://www.princessdentalstaffing.com/", linkLabel: "Visit website",
-  },
-  {
-    slug: "carwash-app", name: "CarWash App", sub: "Car Wash Management Platform", cat: "mobile",
-    summary: "Developed a web and mobile-connected car wash platform that allows customers to purchase individual washes, manage monthly memberships, and access promotions and referral programs. Built business management features for handling customers, subscriptions, payments, marketing campaigns, and car wash operations.",
-    role: "Mobile Software Engineer on a 2-year contract with a team of 2. Developed and maintained web and mobile features for customer and business management, including registration, single-wash purchases, and monthly memberships. Built promotions, referrals, and SMS and email engagement, plus an administrative dashboard for customers, memberships, and car wash operations. Integrated payment and subscription workflows for recurring memberships and individual purchases, and collaborated with a team of 6 developers to deliver features, resolve issues, and improve the application.",
+    slug: "carwash-app", name: "CarWash App", sub: "Car Wash Management & Customer Loyalty", cat: "mobile",
+    summary: "A web and mobile-connected car wash platform where customers buy individual washes, manage monthly memberships, and use promotions and referrals. Business tools cover customers, subscriptions, payments, marketing campaigns, and day-to-day operations.",
+    role: "Developed web and mobile features for customer and business management, including registration, single-wash purchases, and recurring memberships. Built promotions, referrals, and SMS and email engagement, plus an administrative dashboard for customers, memberships, payments, and car wash operations.",
     tags: ["C#", ".NET", ".NET MAUI", "Blazor Hybrid", "REST APIs", "Firebase Analytics", "OneSignal", "iOS", "Android"],
     url: "https://carwashapp.com/", linkLabel: "Visit website",
   },
   {
+    slug: "tdj-golf", name: "TDJ Golf", sub: "Social Golf, Stats & Fantasy", cat: "platform", featured: true,
+    summary: "A sports-tech platform where amateur golfers organize private group games, track round statistics, follow live Pro Tour leaderboards, and compete in fantasy contests. The web app pairs Angular views with Java services and MySQL, including Early Access onboarding.",
+    role: "Built modular Angular and TypeScript dashboards for private groups, stat tracking, and Early Access onboarding. Engineered Java and Spring Boot APIs for group rules, live scoring, notifications, and free versus premium access. Designed MySQL schemas for profiles, rosters, round histories, and fantasy standings, and synced Pro Tour leaderboards, odds, and news into the client.",
+    tags: ["Angular", "TypeScript", "Java", "Spring Boot", "MySQL", "RESTful APIs", "Relational Database Design", "Sports Data & Leaderboard Integration", "Role-Based Authentication", "Agile Development"],
+    url: "https://tdjgolf.com/", linkLabel: "Visit website",
+  },
+  {
     slug: "burndy", name: "Burndy Intelli Tools", sub: "Mobile Product Information App", cat: "mobile",
-    summary: "A mobile product-reference app for electrical professionals who need product details in the field, including lookup, technical specifications, and documentation on iOS and Android.",
-    role: "Developed mobile features for product details, specifications, and documentation. Built search and lookup screens, integrated REST APIs for catalog data, and kept navigation consistent across iOS and Android with C# and .NET.",
-    tags: ["C#", ".NET", "SQL", "REST APIs", "iOS", "Android", "Mobile Application Development"],
+    summary: "A mobile product-reference app for electrical professionals who need product details in the field. It supports product lookup, technical specifications, documentation, and a usable reference when a job site has no signal.",
+    role: "Built React Native screens for iOS and Android so field electricians can search connectors, read specifications, and open installation guides. Engineered C# and .NET APIs for the catalog, compatibility rules, inspection guides, and sales-rep lookup, modeled the SQL catalog, and added on-device caching so specs stay available offline.",
+    tags: ["React Native", "C#", ".NET", "SQL", "REST APIs", "iOS", "Android", "Mobile Application Development"],
     url: "https://apps.apple.com/us/app/burndy-connect/id1294811019", linkLabel: "View on App Store",
   },
   {
-    slug: "abc-storage", name: "ABC Storage Kingston", sub: "Self-Storage Management & Booking", cat: "platform", featured: true,
-    summary: "A self-storage website that helps prospective customers review storage information and submit inquiries. The application pairs an Angular interface with Go backend services, caching, and automated deployment.",
-    role: "Developed and maintained Go backend services for storage information and customer inquiries. Connected REST APIs to Angular and TypeScript interfaces, used Redis for caching, and supported Docker environments and CI/CD releases.",
-    tags: ["Angular", "TypeScript", "Go (Golang)", "Redis", "Docker", "CI/CD", "REST APIs", "Backend Development", "Web Application Development"],
-    url: "https://abcstoragekingston.com/", linkLabel: "Visit website",
+    slug: "best-ride", name: "Best Ride", sub: "Rideshare & Taxi Price Comparison", cat: "mobile",
+    summary: "A mobility comparison app that gathers live fare estimates from rideshare and taxi providers. Passengers compare prices side by side on iOS and Android, then open their chosen service to finish the booking.",
+    role: "Built React Native screens where riders enter a destination and compare live fares across Uber, DiDi, Ola, and local taxis. Engineered aggregation services that query provider pricing APIs together and normalize estimates, ETAs, and vehicle tiers. Added address autocomplete, GPS origin detection, deep links into the chosen booking flow, and subscription and referral handling.",
+    tags: ["React Native", "Node.js", "RESTful APIs", "Third-Party Rideshare & Maps APIs", "Geolocation", "Deep Linking", "In-App Subscriptions", "iOS", "Android"],
+    url: "https://www.bestride.com.au/", linkLabel: "Visit website",
+  },
+  {
+    slug: "pattern", name: "Pattern", sub: "Online Ordering & Loyalty Platform", cat: "mobile",
+    summary: "A food-tech platform for online ordering, digital loyalty, and promotions at restaurants and grocers. Consumer iOS and Android apps sit beside a merchant order app and a Python and Django backend that has processed more than 100,000 orders.",
+    role: "Built branded React Native apps so customers can browse deals, place orders, and redeem rewards, plus a merchant app for receiving and fulfilling orders. Engineered the Python and Django server and admin portal for menus, offers, and high-volume orders, and built the loyalty and discount module that connected to the restaurants' existing systems.",
+    tags: ["React Native", "Python", "Django", "REST APIs", "iOS", "Android", "Loyalty & Offers Engine", "Order Management Systems", "Mobile Application Development"],
+    url: "https://thepattern.app/", linkLabel: "Visit website",
+  },
+  {
+    slug: "freightmate", name: "Freightmate", sub: "Fleet Management & Logistics SaaS", cat: "platform", featured: true,
+    summary: "A fleet management and logistics platform for dispatch, trip coordination, fleet visibility, invoicing, and reporting. Operational screens stay connected to the services transportation teams use each day.",
+    role: "Refactored SQL Server queries and indexing so the live fleet map loaded about 70% faster and data-retrieval I/O fell by 95%. Built GPS, ELD, and driver-app tracking with SMS alerts on geofence entry and exit, and a C# and .NET scheduling API covering about 12,000 automated loads a year plus AI extraction for rate confirmations. Rebuilt the React design system, shipped a reporting suite for about one million rows, and set up AWS, Terraform, and GitHub Actions releases.",
+    tags: ["React", "TypeScript", "JavaScript", "C#", ".NET", "SQL Server", "AWS", "Terraform", "GitHub Actions", "REST APIs", "GPS/ELD Telematics Integration", "Agile/Scrum"],
+    url: "https://www.freightmateapp.com/", linkLabel: "Visit website",
+  },
+  {
+    slug: "elastic-path", name: "Elastic Path", sub: "Composable & Headless Commerce", cat: "platform",
+    summary: "An API-first commerce platform for multi-brand B2B and B2C storefronts, product catalogs, and custom checkout. The work covered storefront delivery and the backend connections those storefronts depend on.",
+    role: "Built headless storefront components in Next.js, React, and TypeScript on Elastic Path commerce APIs. Connected REST and GraphQL for multi-catalog merchandising, price books, bundles, and cart and checkout flows, and synced orders, inventory, and customer accounts with ERP, CRM, and payment systems. Cleared integration bottlenecks so production milestones landed on schedule.",
+    tags: ["React", "Next.js", "TypeScript", "Node.js", "Java", "RESTful APIs", "GraphQL", "Headless E-Commerce", "ERP/CRM Integration", "Microservices"],
+    url: "https://www.elasticpath.com/", linkLabel: "Visit website",
+  },
+  {
+    slug: "lex-mundi", name: "Lex Mundi", sub: "Global Legal Network Directory", cat: "mobile",
+    summary: "Native iOS and Android directory apps for a network of 150 independent law firms across more than 125 countries. Attorneys and corporate counsel can reach member profiles, jurisdictions, and practice areas without a printed directory.",
+    role: "Built the native iOS and Android apps from concept through the App Store and Google Play, replacing the annual printed directories. Added search and filtering by jurisdiction, country, practice area, and firm, and designed the data model and sync so firm listings, contacts, and regional hub details stay current on each device.",
+    tags: ["React Native", "iOS", "Android", "Native Mobile Application Development", "RESTful APIs", "Search & Filtering Architecture", "Offline Data Sync", "UI/UX Design", "Agile/Basecamp"],
+    url: "https://lexmundi.com/", linkLabel: "Visit website",
+  },
+  {
+    slug: "cloudeoc", name: "CloudEOC", sub: "Emergency & Firefighting Mobilization", cat: "platform", featured: true,
+    summary: "A statewide firefighting mobilization web platform for emergency agencies. It coordinates personnel, vehicles, and equipment across neighboring counties while a response is underway.",
+    role: "Designed and built the emergency response application with React, TypeScript, Node.js, and Express.js on AWS. Automated email offers so county fire chiefs can submit personnel and equipment, and built coordinator screens to accept part of a tender, accept all of it, or decline it. Kept the public-safety systems current with mapping and later feature work.",
+    tags: ["React", "TypeScript", "Node.js", "Express.js", "AWS", "RESTful APIs", "Geospatial & Mapping Integration", "Automated Email Notifications", "UI/UX Design"],
+    url: "https://www.earthtechint.com/", linkLabel: "Visit website",
+  },
+  {
+    slug: "goodtwice", name: "GoodTwice", sub: "Goodwill SC E-Commerce Platform", cat: "platform",
+    summary: "A curated resale shop for high-end clothing donations sold at fixed prices. Native iOS and Android apps sat on a Magento backend, with store credit and merchandising tools that supported a reported threefold rise in online sales.",
+    role: "Built native iOS and Android shopping apps with product sliders, cart reminders, and mobile browsing. Re-architected the Magento backend, database, and AWS environments so pages that took about 20 seconds loaded in under 2. Added store-credit accounts and a banner manager for scheduled and animated promotions, and stabilized checkout and uptime through the relaunch.",
+    tags: ["Magento", "PHP", "MySQL", "AWS", "iOS", "Android", "Native Mobile Development", "E-Commerce Performance Optimization", "Store Credit & Checkout Workflows"],
+    url: "https://www.goodwillsc.org/", linkLabel: "Visit website",
+  },
+  {
+    slug: "weather-routing", name: "Weather-Aware Truck Routing", sub: "Logistics Planning Platform", cat: "platform",
+    summary: "A logistics planning application that helps truck drivers compare routes based on forecast weather and vehicle load. Maps, routing, and weather data highlight wind, rain, and snow risk along a journey.",
+    role: "Architected the logistics platform and Django REST Framework APIs for routing, vehicle load, and weather. Built React, TypeScript, and Leaflet dashboards for route comparison and weather overlays, connected OpenStreetMap with Open-Meteo forecasts, and owned Docker packaging and the Railway deployment.",
+    tags: ["React", "TypeScript", "Vite", "Python", "Django REST Framework", "Leaflet", "OpenStreetMap", "Open-Meteo", "Docker", "Gunicorn", "WhiteNoise", "Railway"],
+    url: "https://weather-aware-truck-routing.up.railway.app/", linkLabel: "Visit website",
   },
 ];
 
 export const METRICS = [
   { value: 7, suffix: "+", label: "Years of experience" },
   { value: EXPERIENCE.length, suffix: "", label: "Companies" },
-  { value: PROJECTS.length, suffix: "", label: "Shipped projects" },
   { value: SKILLS.reduce((n, g) => n + g.items.length, 0), suffix: "", label: "Technologies & practices" },
 ];
 

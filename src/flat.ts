@@ -1,5 +1,6 @@
 import "./flat.css";
 import { ACHIEVEMENTS, CATEGORIES, EXPERIENCE, PROFILE, PROJECTS, SKILLS } from "./data";
+import { skillIcon } from "./skill-icons";
 
 const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
@@ -30,85 +31,79 @@ function builtPoints(role: string) {
 }
 
 const BUILT: Record<string, string[]> = {
+  joinedbio: [
+    "Built the user-facing web portals and API gateway with React, Next.js, TypeScript, and Node.js (NestJS), backed by PostgreSQL and Redis.",
+    "Built a C# and .NET microservice that normalized partner health records and synced them through REST APIs.",
+    "Used Claude Code, Cursor, Codex, and GitHub Copilot to shorten an estimated one-year roadmap to six months.",
+    "Paired strict eligibility rules with LLM reasoning agents that read medical records and match participants to studies, cutting manual review time by 70%.",
+    "Designed PostgreSQL schemas, cached hot reads in Redis, and packaged the Node.js and .NET services in Docker for Google Cloud and Kubernetes.",
+  ],
+  "carwash-app": [
+    "Developed web and mobile features for customer and business management.",
+    "Implemented registration, single-wash purchases, and recurring monthly memberships.",
+    "Built promotions, referrals, and customer engagement through SMS and email.",
+    "Built an administrative dashboard for customers, memberships, payments, and car wash operations.",
+  ],
+  "tdj-golf": [
+    "Built Angular and TypeScript dashboards for private golf groups, stat tracking, and Early Access onboarding.",
+    "Engineered Java and Spring Boot APIs for group rules, live scoring, notifications, and free versus premium access.",
+    "Designed MySQL schemas for golfer profiles, group rosters, round histories, and fantasy standings.",
+    "Synced live Pro Tour leaderboards, tournament odds, and daily golf news into the Angular client.",
+  ],
+  burndy: [
+    "Built React Native screens so field electricians can search connectors, view specifications, and open installation guides.",
+    "Engineered C# and .NET APIs for the product catalog, compatibility rules, inspection guides, and sales-rep lookup.",
+    "Modeled SQL tables for specifications, documentation, and regional distributor directories.",
+    "Added on-device storage and background sync so specs stay available without a cell signal.",
+  ],
+  "best-ride": [
+    "Built React Native screens to compare live fares across Uber, DiDi, Ola, and local taxis.",
+    "Engineered aggregation services that query provider pricing APIs together and normalize estimates, ETAs, and vehicle tiers.",
+    "Added address autocomplete, GPS origin detection, and deep links into the chosen booking flow.",
+    "Implemented in-app subscriptions, renewals, and referral codes on iOS and Android.",
+  ],
+  pattern: [
+    "Built branded iOS and Android apps for browsing deals, placing orders, and redeeming loyalty rewards.",
+    "Built a merchant app so restaurant and grocery staff can receive, track, and fulfill orders.",
+    "Engineered the Python and Django server and admin portal for menus, offers, and more than 100,000 orders.",
+    "Built the loyalty and discount module and connected it to the restaurants' existing systems.",
+  ],
+  freightmate: [
+    "Refactored SQL Server queries and indexing, cutting fleet-map load times by about 70% and data-retrieval I/O by 95%.",
+    "Built live tracking across satellite GPS, ELD telematics, and driver apps, with SMS alerts on geofence entry and exit.",
+    "Developed a C# and .NET scheduling API for about 12,000 automated loads a year, plus AI extraction for rate confirmations.",
+    "Rebuilt the React design system, shipped a reporting suite for about one million rows, and set up AWS, Terraform, and GitHub Actions releases.",
+  ],
+  "elastic-path": [
+    "Built headless storefront components in Next.js, React, and TypeScript on the commerce APIs.",
+    "Connected REST and GraphQL for multi-catalog merchandising, price books, bundles, and cart and checkout.",
+    "Synced orders, inventory, and customer accounts with ERP, CRM, and payment systems.",
+    "Cleared integration bottlenecks so production milestones landed on schedule.",
+  ],
+  "lex-mundi": [
+    "Built native iOS and Android directory apps and launched them on the App Store and Google Play.",
+    "Added search and filtering by jurisdiction, country, practice area, and member firm.",
+    "Replaced the annual printed directories with a directory that can be updated immediately.",
+    "Designed the mobile data model and sync so firm listings, contacts, and regional hubs stay current.",
+  ],
+  cloudeoc: [
+    "Built the emergency response application with React, TypeScript, Node.js, and Express.js on AWS.",
+    "Sent automated emails with secure response links so county fire chiefs can offer personnel and equipment.",
+    "Built coordinator screens to review tenders and accept part of a deployment, accept all of it, or decline it.",
+    "Kept the public-safety systems current with mapping support and later feature work.",
+  ],
+  goodtwice: [
+    "Built native iOS and Android shopping apps with product sliders, cart reminders, and mobile browsing.",
+    "Re-architected Magento, the database, and AWS so pages that took about 20 seconds loaded in under 2.",
+    "Added store-credit accounts and a banner manager for scheduled and animated promotions.",
+    "Stabilized checkout and uptime through the relaunch, which was followed by a reported threefold rise in online sales.",
+  ],
   "weather-routing": [
     "Architected an end-to-end logistics platform that pairs truck route planning with weather-based risk assessment.",
     "Built Django REST Framework APIs for routing, vehicle load, and weather conditions.",
-    "Built responsive React, TypeScript, and Leaflet dashboards on OpenStreetMap.",
-    "Connected Open-Meteo forecasts so drivers can see wind, rain, and snow risk along a route.",
+    "Built React, TypeScript, and Leaflet dashboards for route comparison and weather overlays.",
+    "Connected OpenStreetMap routing with Open-Meteo forecasts for wind, rain, and snow along a route.",
     "Owned the architecture, implementation, Docker packaging, and Railway deployment.",
-  ],
-  "angel-extensions": [
-    "Developed and maintained a customized Shopify storefront for hair extension collections and styling products.",
-    "Organized educational content and showroom information into the shopping experience.",
-    "Built responsive product and collection layouts with Liquid, HTML, CSS, and JavaScript.",
-    "Supported storefront performance, SEO, and brand-aligned updates after launch.",
-  ],
-  blade: [
-    "Built full-stack features in React, TypeScript, and Java for contact discovery, audience management, and email outreach.",
-    "Developed REST APIs and MySQL records for contacts and campaigns.",
-    "Integrated the Gmail API and Google OAuth 2.0 so campaigns send from a connected account.",
-    "Ranked contacts by how often they appear in a user's Gmail history.",
-    "Added filtering and message previews before a campaign is sent.",
-  ],
-  "simi-haze": [
-    "Developed and maintained a responsive Shopify beauty storefront with interactive product layouts.",
-    "Added customer reviews and checkout through several payment methods.",
-    "Customized the frontend with JavaScript, Vue.js, Alpine.js, and Tailwind CSS.",
-    "Integrated Klaviyo, Attentive, review platforms, and Microsoft Clarity.",
-  ],
-  mockit: [
-    "Developed and maintained a WordPress apparel mockup platform for artwork uploads and garment customization.",
-    "Built product-image workflows so designers and brands can present mockups.",
-    "Built responsive layouts with PHP, JavaScript, Bootstrap, and jQuery.",
-    "Customized Elementor and Blocksy for the storefront.",
-    "Integrated PayPal, Mailchimp, analytics, WP Rocket, and Cloudflare.",
-  ],
-  workstream: [
-    "Developed Python and Django backend functionality for expenses, leave, performance reviews, and HR workflows.",
-    "Maintained PostgreSQL-backed employee records.",
-    "Connected REST services to the React interfaces used by HR teams.",
-    "Supported Odoo integration and Single Sign-On.",
-    "Worked in a GitLab-based development flow for ongoing HR features.",
-  ],
-  joinedbio: [
-    "Developed full-stack features for a healthcare research marketplace connecting participants with study organizations.",
-    "Engineered Django REST Framework APIs for participant information and study coordination.",
-    "Built React, Next.js, and TypeScript interfaces for the marketplace.",
-    "Implemented PostgreSQL storage with Redis and Celery background processing.",
-    "Contributed to AI-assisted research workflows on Google Cloud and Kubernetes.",
-  ],
-  freightmate: [
-    "Developed dispatch, trip coordination, fleet visibility, invoicing, and reporting features with Angular, JavaScript, C#, and .NET.",
-    "Built operational dashboards for day-to-day fleet work.",
-    "Integrated those dashboards with REST services.",
-    "Supported SQL Server data handling for fleet and trip records.",
-    "Worked with AWS, Terraform, and GitHub Actions for delivery.",
-  ],
-  "princess-dental": [
-    "Developed React Native features for iOS and Android, including reusable components and navigation.",
-    "Built candidate profiles and job discovery for temporary and permanent dental roles.",
-    "Built application and availability workflows.",
-    "Integrated REST APIs for jobs, profiles, and scheduling.",
-    "Added push notifications so candidates and clinics stay updated.",
-  ],
-  "carwash-app": [
-    "Developed web and mobile features for customer registration, single-wash purchases, and monthly memberships.",
-    "Built promotions, referrals, and SMS and email engagement.",
-    "Built an administrative dashboard for customers, memberships, and car wash operations.",
-    "Integrated payment and subscription workflows for recurring memberships and individual purchases.",
-    "Collaborated with the team to deliver features, resolve issues, and improve the application.",
-  ],
-  burndy: [
-    "Developed mobile features for product details, specifications, and documentation in the field.",
-    "Built search and lookup screens for the electrical product catalog.",
-    "Integrated REST APIs so catalog data stays current.",
-    "Kept navigation consistent across iOS and Android with C# and .NET.",
-  ],
-  "abc-storage": [
-    "Developed and maintained Go backend services for storage information and customer inquiries.",
-    "Connected REST APIs to Angular and TypeScript interfaces.",
-    "Used Redis caching so storage details load quickly.",
-    "Supported Docker environments and CI/CD releases.",
   ],
 };
 
@@ -208,6 +203,10 @@ if (root) {
         <a href="#flat-experience">Experience</a>
         <a href="#flat-contact">Contact</a>
       </nav>
+      <button type="button" class="flat-mute" data-sound aria-pressed="true" aria-label="Mute sound">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        <svg class="flat-mute-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h3.2L12 18V6L7.2 10H4z" fill="currentColor"/><path d="M16 9.2 20.2 13.4M20.2 9.2 16 13.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
       ${enterBtn("3D")}
     </header>
 
@@ -265,7 +264,6 @@ if (root) {
             <ul class="flat-stats">
               <li><b>7+</b><span>Years building software</span></li>
               <li><b>${EXPERIENCE.length}</b><span>Companies</span></li>
-              <li><b>${PROJECTS.length}</b><span>Shipped projects</span></li>
             </ul>
           </aside>
         </div>
@@ -286,27 +284,39 @@ if (root) {
         </div>
         <div class="flat-grid">
           ${PROJECTS.map((p, i) => {
-            const points = (BUILT[p.slug] ?? builtPoints(p.role)).slice(0, 2);
+            const points = BUILT[p.slug] ?? builtPoints(p.role);
+            const lead = points.slice(0, 2);
+            const rest = points.slice(2);
             const shown = p.tags.slice(0, 4);
-            const extra = p.tags.length - shown.length;
+            const extraTags = p.tags.slice(4);
+            const bullets = (items: string[]) => items.map((point) => `<li><span>${esc(point)}</span></li>`).join("");
+            const chips = (items: string[]) => items.map((tag) => `<span>${skillIcon(tag)}${esc(tag)}</span>`).join("");
             return `
-            <article class="flat-card flat-reveal" data-project="${i}" tabindex="0">
-              <img src="projects/${esc(p.slug)}/thumb.jpg" alt="" />
+            <article class="flat-card" data-project="${i}">
+              <button type="button" class="flat-card-shot" aria-expanded="false" aria-label="Show more about ${esc(p.name)}">
+                <img src="projects/${esc(p.slug)}/thumb.jpg" alt="" />
+              </button>
               <div class="flat-card-body">
                 <div class="flat-card-top">
                   <h3>${esc(p.name)}</h3>
                   <span class="flat-card-cat">${esc(CAT_SHORT[p.cat] ?? CATEGORIES[p.cat])}</span>
                 </div>
                 <p class="flat-card-sum">${esc(p.summary)}</p>
-                <ul class="flat-card-built">${points.map((point) => `<li><span>${esc(point)}</span></li>`).join("")}</ul>
+                <ul class="flat-card-built">${bullets(lead)}</ul>
+                ${rest.length ? `<div class="flat-card-more"><div><ul class="flat-card-built">${bullets(rest)}</ul></div></div>` : ""}
                 <p class="flat-card-skill">Skill</p>
                 <div class="flat-card-skills">
-                  ${shown.map((tag) => `<span>${esc(tag)}</span>`).join("")}
-                  ${extra > 0 ? `<span class="is-more">+${extra}</span>` : ""}
+                  ${chips(shown)}
+                  ${extraTags.length ? `<span class="is-more">+${extraTags.length}</span>` : ""}
                 </div>
+                ${extraTags.length ? `<div class="flat-card-more"><div><div class="flat-card-skills">${chips(extraTags)}</div></div></div>` : ""}
                 <div class="flat-card-foot">
-                  <button type="button" data-detail>More detail</button>
-                  <a href="${esc(p.url)}" target="_blank" rel="noopener">Visit Site</a>
+                  <button type="button" data-more>
+                    <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span class="more">Show more</span>
+                    <span class="less">Show less</span>
+                  </button>
+                  <a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.linkLabel)}</a>
                 </div>
               </div>
             </article>`;
@@ -323,7 +333,7 @@ if (root) {
           ${SKILLS.map((g) => `
             <article class="flat-reveal" style="--c:${g.color}">
               <h3>${esc(g.name)}</h3>
-              <ul>${g.items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul>
+              <ul>${g.items.map((item) => `<li>${skillIcon(item)}${esc(item)}</li>`).join("")}</ul>
             </article>`).join("")}
         </div>
       </section>
@@ -378,12 +388,21 @@ if (root) {
         <div>
           <p class="flat-kicker">Contact</p>
           <h2>Let's talk</h2>
-          <p>${esc(PROFILE.email)}</p>
+          <button type="button" class="flat-mail" data-copy-email aria-label="Copy email address">
+            <span>${esc(PROFILE.email)}</span>
+            <svg class="flat-copy" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5 15H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v1" fill="none" stroke="currentColor" stroke-width="1.7"/></svg>
+            <span class="flat-copied">Copied</span>
+          </button>
           <div class="flat-actions">
-            <a class="flat-ghost" href="mailto:${esc(PROFILE.email)}">Email</a>
-            <a class="flat-ghost" href="${esc(PROFILE.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>
-            <a class="flat-ghost" href="${esc(PROFILE.github)}" target="_blank" rel="noopener">GitHub</a>
-            <a class="flat-ghost" href="${esc(PROFILE.resume)}" target="_blank" rel="noopener">Resume</a>
+            <a class="flat-icon" href="${esc(PROFILE.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2zM8 19H5V9h3zM6.5 7.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-4.9c0-1.2 0-2.7-1.6-2.7S12.5 12.7 12.5 14V19h-3V9h2.9v1.4c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z"/></svg>
+            </a>
+            <a class="flat-icon" href="${esc(PROFILE.github)}" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.6 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg>
+            </a>
+            <a class="flat-icon" href="${esc(PROFILE.resume)}" target="_blank" rel="noopener" aria-label="Resume">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l5 5V20a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 20V5A1.5 1.5 0 0 1 7 3.5z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M14 3.5V9h5.5M8 13h8M8 17h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </a>
           </div>
         </div>
         ${enterBtn("Open the 3D portfolio", "flat-3d-lg")}
@@ -419,6 +438,33 @@ if (root) {
     root.setAttribute("aria-hidden", "false");
     document.body.classList.add("show-flat");
   };
+
+  const copyEmail = root.querySelector<HTMLButtonElement>("[data-copy-email]");
+  let copiedTimer = 0;
+  copyEmail?.addEventListener("click", async () => {
+    const email = PROFILE.email;
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      const area = document.createElement("textarea");
+      area.value = email;
+      area.setAttribute("readonly", "");
+      area.style.position = "fixed";
+      area.style.left = "-9999px";
+      document.body.append(area);
+      area.select();
+      document.execCommand("copy");
+      area.remove();
+    }
+    if (!copyEmail) return;
+    copyEmail.classList.add("is-copied");
+    copyEmail.setAttribute("aria-label", "Email copied");
+    window.clearTimeout(copiedTimer);
+    copiedTimer = window.setTimeout(() => {
+      copyEmail.classList.remove("is-copied");
+      copyEmail.setAttribute("aria-label", "Copy email address");
+    }, 1600);
+  });
 
   const warp = document.createElement("div");
   warp.id = "warp";
@@ -538,6 +584,10 @@ if (root) {
 
   const travel = (to: "2d" | "3d") => {
     document.querySelector<HTMLDialogElement>("#flat-modal")?.close();
+    root.querySelectorAll<HTMLElement>(".flat-card.is-open").forEach((card) => {
+      card.classList.remove("is-open");
+      card.querySelector(".flat-card-shot")?.setAttribute("aria-expanded", "false");
+    });
     document.querySelector<HTMLDialogElement>("#projectsDialog")?.close();
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduced || warping) {
@@ -580,70 +630,71 @@ if (root) {
   root.querySelectorAll("[data-enter-3d]").forEach((btn) => btn.addEventListener("click", () => travel("3d")));
   document.querySelectorAll("[data-enter-2d]").forEach((btn) => btn.addEventListener("click", () => travel("2d")));
 
-  const modal = root.querySelector<HTMLDialogElement>("#flat-modal");
-  const modalSet = (key: string, value: string) => {
-    const node = modal?.querySelector(`[data-modal="${key}"]`);
-    if (node) node.textContent = value;
-  };
-  const fitModal = () => {
-    if (!modal?.open) return;
-    const layout = modal.querySelector<HTMLElement>(".flat-modal-layout");
-    const img = modal.querySelector<HTMLImageElement>(".flat-modal-img");
-    if (!layout || !img) return;
-    modal.style.transform = "none";
-    modal.style.height = "auto";
-    img.style.height = "";
-    layout.style.transform = "none";
-    layout.style.width = "100%";
-    const available = window.innerHeight - 24;
-    const needed = layout.offsetHeight;
-    if (needed <= available) return;
-    const scale = (available - 4) / needed;
-    layout.style.width = `${100 / scale}%`;
-    layout.style.transformOrigin = "top left";
-    layout.style.transform = `scale(${scale})`;
-    modal.style.height = `${Math.ceil(layout.getBoundingClientRect().height)}px`;
-  };
-  const openProject = (index: number) => {
-    const project = PROJECTS[index];
-    if (!modal || !project) return;
-    const img = modal.querySelector<HTMLImageElement>(".flat-modal-img");
-    if (img) {
-      img.src = `projects/${project.slug}/thumb.jpg`;
-      img.alt = project.name;
+  const grid = root.querySelector<HTMLElement>(".flat-grid");
+  const columnCount = () => (matchMedia("(max-width: 760px)").matches ? 1 : matchMedia("(max-width: 980px)").matches ? 2 : 3);
+  let packed = 0;
+  // Closed cards in one visual row share a bottom edge. An open card grows
+  // past that height, so only the cards under it in the same column move.
+  const alignRows = () => {
+    if (!grid) return;
+    const cols = [...grid.querySelectorAll<HTMLElement>(".flat-col")];
+    if (!cols.length) return;
+    const cards = [...grid.querySelectorAll<HTMLElement>(".flat-card")];
+    const mores = [...grid.querySelectorAll<HTMLElement>(".flat-card-more")];
+    cards.forEach((card) => { card.style.minHeight = ""; });
+    mores.forEach((panel) => {
+      panel.style.transition = "none";
+      panel.style.gridTemplateRows = "0fr";
+    });
+    const depth = Math.max(...cols.map((col) => col.children.length));
+    const closed: number[][] = [];
+    for (let row = 0; row < depth; row++) {
+      closed[row] = cols.map((col) => {
+        const card = col.children[row] as HTMLElement | undefined;
+        return card ? card.getBoundingClientRect().height : 0;
+      });
     }
-    modalSet("kicker", CAT_SHORT[project.cat] ?? CATEGORIES[project.cat]);
-    modalSet("title", project.name);
-    modalSet("sub", project.sub);
-    modalSet("summary", project.summary);
-    const built = modal.querySelector("[data-modal='built']");
-    if (built) built.innerHTML = (BUILT[project.slug] ?? builtPoints(project.role)).map((point) => `<li>${esc(point)}</li>`).join("");
-    const live = modal.querySelector<HTMLAnchorElement>("[data-modal='live']");
-    if (live) live.href = project.url;
-    const skills = modal.querySelector("[data-modal='skills']");
-    if (skills) skills.innerHTML = project.tags.map((tag) => `<span>${esc(tag)}</span>`).join("");
-    if (!modal.open) modal.show();
-    requestAnimationFrame(fitModal);
+    for (let row = 0; row < depth; row++) {
+      const height = Math.ceil(Math.max(...closed[row]));
+      cols.forEach((col, i) => {
+        const card = col.children[row] as HTMLElement | undefined;
+        if (card) card.style.minHeight = `${height}px`;
+      });
+    }
+    mores.forEach((panel) => {
+      panel.style.transition = "";
+      panel.style.gridTemplateRows = "";
+    });
+  };
+  const packColumns = () => {
+    if (!grid) return;
+    const count = columnCount();
+    if (count !== packed || !grid.querySelector(".flat-col")) {
+      packed = count;
+      const cards = [...grid.querySelectorAll<HTMLElement>(".flat-card")];
+      cards.forEach((card) => grid.append(card));
+      grid.querySelectorAll(".flat-col").forEach((col) => col.remove());
+      const cols = Array.from({ length: count }, () => {
+        const col = document.createElement("div");
+        col.className = "flat-col";
+        grid.append(col);
+        return col;
+      });
+      cards.forEach((card, i) => cols[i % count].append(card));
+    }
+    alignRows();
+  };
+  packColumns();
+  window.addEventListener("resize", packColumns);
+  document.fonts?.ready.then(alignRows);
+
+  const toggleCard = (card: HTMLElement) => {
+    const open = card.classList.toggle("is-open");
+    card.querySelector(".flat-card-shot")?.setAttribute("aria-expanded", open ? "true" : "false");
   };
   root.querySelectorAll<HTMLElement>(".flat-card").forEach((card) => {
-    const open = () => openProject(Number(card.dataset.project));
-    card.addEventListener("click", (event) => {
-      if ((event.target as HTMLElement).closest("a")) return;
-      event.stopPropagation();
-      open();
-    });
-    card.addEventListener("keydown", (event) => {
-      if (event.key !== "Enter" || (event.target as HTMLElement).closest("a, button")) return;
-      event.preventDefault();
-      open();
-    });
-  });
-  window.addEventListener("resize", fitModal);
-  modal?.querySelector("[data-close-modal]")?.addEventListener("click", () => modal.close());
-  root.addEventListener("click", (event) => {
-    if (!modal?.open) return;
-    if (event.target instanceof Node && modal.contains(event.target)) return;
-    modal.close();
+    card.querySelector(".flat-card-shot")?.addEventListener("click", () => toggleCard(card));
+    card.querySelector("[data-more]")?.addEventListener("click", () => toggleCard(card));
   });
 
   const sky = root.querySelector<HTMLCanvasElement>(".flat-stars");

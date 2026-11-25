@@ -638,5 +638,250 @@
         "caption": "Editorial grade"
       }
     ]
+  },
+  "tdj-golf": {
+    "dir": "projects/tdj-golf/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "best-ride": {
+    "dir": "projects/best-ride/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "pattern": {
+    "dir": "projects/pattern/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "lex-mundi": {
+    "dir": "projects/lex-mundi/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "cloudeoc": {
+    "dir": "projects/cloudeoc/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "elastic-path": {
+    "dir": "projects/elastic-path/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
+  },
+  "goodtwice": {
+    "dir": "projects/goodtwice/",
+    "images": [
+      {
+        "src": "hero.jpg",
+        "caption": "Hero visual",
+        "wide": true
+      },
+      {
+        "src": "laptop.jpg",
+        "caption": "Desktop mockup"
+      },
+      {
+        "src": "crop-a.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "phone.jpg",
+        "caption": "Mobile mockup"
+      },
+      {
+        "src": "crop-b.jpg",
+        "caption": "Detail"
+      },
+      {
+        "src": "zoom.jpg",
+        "caption": "Close-up",
+        "wide": true
+      },
+      {
+        "src": "noir.jpg",
+        "caption": "Editorial grade"
+      }
+    ]
   }
 }
